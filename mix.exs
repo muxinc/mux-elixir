@@ -16,9 +16,7 @@ defmodule Mux.MixProject do
       name: "Mux",
       source_url: @github_url,
       homepage_url: "https://mux.com",
-      docs: [main: "Mux", # The main page in the docs
-              logo: "logo.png",
-              extras: ["README.md"]]
+      docs: [logo: "logo.png", extras: ["README.md"]]
     ]
   end
 

@@ -1,4 +1,5 @@
 defmodule Mux.Exception do
+  @moduledoc false
   defexception [:message, :response]
 
   def exception(%{status: status} = resp) do
