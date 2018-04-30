@@ -1,4 +1,4 @@
-# MuxEx
+# Mux Elixir
 
 Official Mux API wrapper for Elixir projects. 🙌
 
