@@ -48,9 +48,9 @@ defmodule Mux.Video.PlaybackIds do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, playback_id, _env} = Mux.Video.PlaybackIds.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
-      iex> playback_id
-      nil
+      iex> {status, "", _env} = Mux.Video.PlaybackIds.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> status
+      :ok
 
   """
   def delete(client, asset_id, playback_id) do
