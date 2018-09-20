@@ -30,7 +30,7 @@ defmodule Mux.Video.AssetsTest do
           "data" => Mux.Fixtures.asset(:create)
         }}
       %{method: :delete} ->
-        %Tesla.Env{status: 204, body: %{}}
+        %Tesla.Env{status: 204, body: ""}
     end
 
     {:ok, %{client: client}}
