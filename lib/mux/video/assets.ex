@@ -62,7 +62,7 @@ defmodule Mux.Video.Assets do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {status, nil, _env} = Mux.Video.Assets.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      iex> {status, "", _env} = Mux.Video.Assets.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
       iex> status
       :ok
 
