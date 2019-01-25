@@ -2,6 +2,7 @@ defmodule Mux.Fixtures do
   @moduledoc false
 
   def asset(a \\ nil)
+
   def asset(:create) do
     %{
       "status" => "preparing",
@@ -12,7 +13,7 @@ defmodule Mux.Fixtures do
         }
       ],
       "id" => "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc",
-      "created_at" => "1521503163",
+      "created_at" => "1521503163"
     }
   end
 
@@ -81,8 +82,8 @@ defmodule Mux.Fixtures do
 
   def playback_id do
     %{
-      "policy": "public",
-      "id": "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"
+      policy: "public",
+      id: "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"
     }
   end
 
@@ -90,8 +91,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => 2,
       "timeframe" => [
-        1516241988,
-        1516501188
+        1_516_241_988,
+        1_516_501_188
       ],
       "data" => [
         %{
@@ -116,8 +117,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => nil,
       "timeframe" => [
-        1516241921,
-        1516501121
+        1_516_241_921,
+        1_516_501_121
       ],
       "data" => [
         %{
@@ -355,8 +356,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => 2,
       "timeframe" => [
-        1516328401,
-        1516414801
+        1_516_328_401,
+        1_516_414_801
       ],
       "data" => [
         "https://s3.amazonaws.com/mux-data-exports-test/10942/2017_10_1.csv.gz?signature=asdf1234",
@@ -369,8 +370,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => nil,
       "timeframe" => [
-        1516328397,
-        1516414797
+        1_516_328_397,
+        1_516_414_797
       ],
       "data" => %{
         "basic" => [
@@ -407,8 +408,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => 2,
       "timeframe" => [
-        1516241996,
-        1516501196
+        1_516_241_996,
+        1_516_501_196
       ],
       "data" => [
         %{
@@ -427,8 +428,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => 2,
       "timeframe" => [
-        1500389723,
-        1500648923
+        1_500_389_723,
+        1_500_648_923
       ],
       "data" => [
         %{
@@ -448,8 +449,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => nil,
       "timeframe" => [
-        1516241946,
-        1516501146
+        1_516_241_946,
+        1_516_501_146
       ],
       "data" => %{
         "value" => 0.8333333333333334,
@@ -460,12 +461,29 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def signing_key(a \\ nil)
+
+  def signing_key(:create) do
+    %{
+      "private_key" => "thisisaverysecretkeythatinreallifewouldbealotlonger==",
+      "id" => "3kXq01SS00BQZqHHIq1egKAhuf7urAc400C",
+      "created_at" => "1540438441"
+    }
+  end
+
+  def signing_key(_) do
+    %{
+      "id" => "3kXq01SS00BQZqHHIq1egKAhuf7urAc400C",
+      "created_at" => "1540438441"
+    }
+  end
+
   def timeseries() do
     %{
       "total_row_count" => 73,
       "timeframe" => [
-        1516241947,
-        1516501147
+        1_516_241_947,
+        1_516_501_147
       ],
       "data" => [
         [
@@ -482,12 +500,62 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def upload(a \\ nil)
+
+  def upload(:create) do
+    %{
+      "url" =>
+        "https://storage.googleapis.com/video-storage-us-east1-uploads/OOTbA00CpWh6OgwV3asF00IvD2STk22UXM?Expires=1545157644&GoogleAccessId=mux-direct-upload%40mux-cloud.iam.gserviceaccount.com&Signature=bloopblop",
+      "timeout" => 3600,
+      "status" => "waiting",
+      "new_asset_settings" => %{
+        "playback_policies" => [
+          "public"
+        ]
+      },
+      "id" => "OOTbA00CpWh6OgwV3asF00IvD2STk22UXM",
+      "cors_origin" => "http://localhost:8080"
+    }
+  end
+
+  def upload(:cancel) do
+    %{
+      "url" =>
+        "https://storage.googleapis.com/video-storage-us-east1-uploads/OOTbA00CpWh6OgwV3asF00IvD2STk22UXM?Expires=1545157644&GoogleAccessId=mux-direct-upload%40mux-cloud.iam.gserviceaccount.com&Signature=bloopblop",
+      "timeout" => 3600,
+      "status" => "cancelled",
+      "new_asset_settings" => %{
+        "playback_policies" => [
+          "public"
+        ]
+      },
+      "id" => "OOTbA00CpWh6OgwV3asF00IvD2STk22UXM",
+      "cors_origin" => "http://localhost:8080"
+    }
+  end
+
+  def upload(_) do
+    %{
+      "url" =>
+        "https://storage.googleapis.com/video-storage-us-east1-uploads/OOTbA00CpWh6OgwV3asF00IvD2STk22UXM?Expires=1545157644&GoogleAccessId=mux-direct-upload%40mux-cloud.iam.gserviceaccount.com&Signature=bloopblop",
+      "timeout" => 3600,
+      "status" => "waiting",
+      "new_asset_settings" => %{
+        "playback_policies" => [
+          "public"
+        ]
+      },
+      "id" => "OOTbA00CpWh6OgwV3asF00IvD2STk22UXM",
+      "cors_origin" => "http://localhost:8080"
+    }
+  end
+
   def video_views() do
     %{
       "total_row_count" => 2,
       "timeframe" => [
-        1516241921,
-        1516501121
+        1_516_241_921,
+        1_516_501_121
       ],
       "data" => [
         %{
@@ -524,8 +592,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => 1,
       "timeframe" => [
-        1516241921,
-        1516501121
+        1_516_241_921,
+        1_516_501_121
       ],
       "data" => %{
         "view_seek_duration" => nil,
@@ -638,8 +706,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => nil,
       "timeframe" => [
-        1516328328,
-        1516414728
+        1_516_328_328,
+        1_516_414_728
       ],
       "data" => [
         %{
@@ -648,7 +716,8 @@ defmodule Mux.Fixtures do
           "message" => "This is a message for this crazy error",
           "last_seen" => "2018-01-20T01:18:48.054Z",
           "id" => 1121,
-          "description" => "If we're going to understand this error, first we need to understand life itself.",
+          "description" =>
+            "If we're going to understand this error, first we need to understand life itself.",
           "count" => 2,
           "code" => 1
         },
@@ -658,7 +727,8 @@ defmodule Mux.Fixtures do
           "message" => "This is a message for this crazy error",
           "last_seen" => "2018-01-19T23:18:48.054Z",
           "id" => 1120,
-          "description" => "If we're going to understand this error, first we need to understand life itself.",
+          "description" =>
+            "If we're going to understand this error, first we need to understand life itself.",
           "count" => 1,
           "code" => 3
         }
