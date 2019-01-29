@@ -23,17 +23,18 @@ defmodule Mux.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger],
+      extra_applications: [:logger]
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:tesla, "~> 1.0.0-beta.1"},
+      {:tesla, "~> 1.0.0"},
       {:jason, ">= 1.0.0"},
+      {:jose, "~> 1.9"},
       {:ex_doc, "~> 0.18", only: :dev, runtime: false},
-      {:mix_test_watch, "~> 0.5", only: :dev, runtime: false},
+      {:mix_test_watch, "~> 0.5", only: :dev, runtime: false}
     ]
   end
 
@@ -43,7 +44,7 @@ defmodule Mux.MixProject do
       maintainers: ["Matthew McClure <matt@mux.com>"],
       licenses: ["MIT"],
       links: %{"GitHub" => @github_url},
-      description: "Official Elixir package for interacting with the Mux APIs",
+      description: "Official Elixir package for interacting with the Mux APIs"
     ]
   end
 end

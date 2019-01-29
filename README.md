@@ -1,5 +1,7 @@
 # Mux Elixir
 
+![build status](https://travis-ci.org/muxinc/mux-elixir.svg?branch=master)
+
 Official Mux API wrapper for Elixir projects. 🙌
 
 ## Installation

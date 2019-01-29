@@ -30,7 +30,6 @@ defmodule Mux.Data.MetricsTest do
       %{method: :get,
         url: @base_url <> "/video_startup_time/timeseries"} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.timeseries()}
-      i -> IO.inspect i
     end
 
     {:ok, %{client: client}}
