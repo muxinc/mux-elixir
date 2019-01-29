@@ -461,6 +461,10 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def signature(:sign) do
+    "abcdewefsdllkjejosoeifjoseifjosiejlsekfjsloeifjselofijsoeifjsoeifj"
+  end
+
   def signing_key(a \\ nil)
 
   def signing_key(:create) do
