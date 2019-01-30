@@ -41,5 +41,28 @@ defmodule Mux.TokenTest do
       assert decoded_params["aud"] === "t"
       assert decoded_params["height"] === 100
     end
+
+    test "expiration value is added to the current timestamp" do
+      expiration = 60 * 60 * 3
+
+      token =
+        Mux.Token.sign(
+          "abcd1234",
+          token_id: @token_id,
+          token_secret: @token_secret,
+          expiration: expiration
+        )
+
+      {valid, params, _} = Mux.Token.verify(token, token_secret: @token_secret)
+
+      assert valid
+
+      %{"exp" => decoded_exp} = params |> Jason.decode!()
+
+      # Just in case the test ran right on a second boundary, we just want to make sure these two timestamps
+      # are within one second of each other.
+      total_expiration_time = (DateTime.utc_now() |> DateTime.to_unix()) + expiration
+      assert decoded_exp >= total_expiration_time - 1 && decoded_exp <= total_expiration_time + 1
+    end
   end
 end

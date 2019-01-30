@@ -38,7 +38,7 @@ defmodule Mux.Token do
       %{
         "aud" => opts[:type] |> type_to_aud(),
         "sub" => playback_id,
-        "exp" => opts[:expiration]
+        "exp" => (DateTime.utc_now() |> DateTime.to_unix()) + opts[:expiration]
       }
       |> Map.merge(params)
       |> Jason.encode!()
@@ -63,7 +63,7 @@ defmodule Mux.Token do
     application_env = [
       token_id: Application.get_env(:mux, :signing_token_id),
       token_secret: Application.get_env(:mux, :signing_token_secret),
-      expiration: (DateTime.utc_now() |> DateTime.to_unix()) + 604_800,
+      expiration: 604_800,
       type: :video,
       params: %{}
     ]
