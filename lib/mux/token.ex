@@ -19,7 +19,7 @@ defmodule Mux.Token do
   - `options.token_id`: Signing token ID (defaults to `Application.get_env(:mux, :signing_token_id)`)
   - `options.token_secret`: Signing token secret (defaults to `Application.get_env(:mux, :signing_token_secret)`)
   - `options.type`: Type of signature to create. Defaults to `:video`, options are: `:video, :gif, :thumbnail`
-  - `options.expiration`: UTC Timestamp (in seconds) to expire the token. Defaults to 7 days from now (604,800)
+  - `options.expiration`: Seconds the token is valid for. Defaults to 7 days from now (604,800)
   - `options.params`: Map that includes any additional query params. For thumbnails this would be values like `height` or `time`.
   """
   @spec sign(String.t(), options()) :: String.t()
