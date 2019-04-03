@@ -1,8 +1,16 @@
+![Mux Elixir Banner](github-elixir-sdk.png)
+
 # Mux Elixir
 
 ![build status](https://travis-ci.org/muxinc/mux-elixir.svg?branch=master)
 
-Official [Mux](https://mux.com) API wrapper for Elixir projects. 🙌
+Official Mux API wrapper for Elixir projects, supporting both Mux Data and Mux Video.
+
+[Mux Video](https://mux.com/video) is an API-first platform, powered by data and designed by video experts to make beautiful video possible for every development team.
+
+[Mux Data](https://mux.com/data) is a platform for monitoring your video streaming performance with just a few lines of code. Get in-depth quality of service analytics on web, mobile, and OTT devices.
+
+Not familiar with Mux? Check out https://mux.com/ for more information.
 
 ## Installation
 
