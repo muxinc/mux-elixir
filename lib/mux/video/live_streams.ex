@@ -9,14 +9,14 @@ defmodule Mux.Video.LiveStreams do
   @doc """
   Create a new live stream.
 
-  Returns `{:ok, live_stream, %Tesla.Client{}}`.
+  Returns `{:ok, live_stream, %Tesla.Env{}}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> Mux.Video.LiveStreams.create(client, %{playback_policy: "public", new_asset_settings: %{playback_policy: 'public'}})
-      {:ok, #{inspect Fixtures.live_stream(:create)}, #{inspect Fixtures.tesla_env({:live_stream, [:create]})}}
-
+      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.create(client, %{playback_policy: "public", new_asset_settings: %{playback_policy: 'public'}})
+      iex> live_stream
+      #{inspect Fixtures.live_stream()}
   """
   def create(client, params) do
     Base.post(client, @path, params)
@@ -25,7 +25,7 @@ defmodule Mux.Video.LiveStreams do
   @doc """
   List all live streams.
 
-  Returns a tuple such as `{:ok, live_streams, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, live_streams, %Tesla.Env{}}`
 
   ## Examples
 
@@ -40,7 +40,7 @@ defmodule Mux.Video.LiveStreams do
   @doc """
   Retrieve a live stream by ID.
 
-  Returns a tuple such as `{:ok, live_stream, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, live_stream, %Tesla.Env{}}`
 
   ## Examples
 
@@ -57,7 +57,7 @@ defmodule Mux.Video.LiveStreams do
   @doc """
   Delete a live stream.
 
-  Returns a tuple such as `{:ok, "", %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
   ## Examples
 
@@ -74,7 +74,7 @@ defmodule Mux.Video.LiveStreams do
   @doc """
   Signal a live stream is finished
 
-  Returns a tuple such as `{:ok, "", %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
   ## Examples
 
@@ -92,7 +92,7 @@ defmodule Mux.Video.LiveStreams do
   Reset a live stream key if you want to immediately stop the current stream key
   from working and create a new stream key that can be used for future broadcasts.
 
-  Returns a tuple such as `{:ok, "", %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
   ## Examples
 
@@ -109,7 +109,7 @@ defmodule Mux.Video.LiveStreams do
   @doc """
   Create a live stream playback ID
 
-  Returns a tuple such as `{:ok, playback_ids, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, playback_ids, %Tesla.Env{}}`
 
   ## Examples
 
@@ -126,7 +126,7 @@ defmodule Mux.Video.LiveStreams do
   @doc """
   Delete a live stream playback ID
 
-  Returns a tuple such as `{:ok, "", %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
   ## Examples
 

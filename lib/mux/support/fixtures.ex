@@ -52,7 +52,7 @@ defmodule Mux.Fixtures do
     }
   end
 
-  def live_stream(_) do
+  def live_stream() do
     %{
       "stream_key" => "54676b58-6b19-5acb-f5bf-3aa35222efc6",
       "status" => "idle",
