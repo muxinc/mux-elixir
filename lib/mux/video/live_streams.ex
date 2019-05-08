@@ -62,7 +62,7 @@ defmodule Mux.Video.LiveStreams do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {status, "", _env} = Mux.Video.LiveStreams.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      iex> {status, _data, _env} = Mux.Video.LiveStreams.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
       iex> status
       :ok
 
@@ -85,7 +85,7 @@ defmodule Mux.Video.LiveStreams do
 
   """
   def signal_complete(client, live_stream_id) do
-    Base.put(client, "#{@path}/#{live_stream_id}/complete")
+    Base.put(client, "#{@path}/#{live_stream_id}/complete", %{})
   end
 
   @doc """
@@ -103,7 +103,7 @@ defmodule Mux.Video.LiveStreams do
 
   """
   def reset_stream_key(client, live_stream_id) do
-    Base.post(client, "#{@path}/#{live_stream_id}/reset-stream-key")
+    Base.post(client, "#{@path}/#{live_stream_id}/reset-stream-key", %{})
   end
 
   @doc """
