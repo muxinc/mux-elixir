@@ -51,7 +51,7 @@ defmodule Mux.Video.LiveStreams do
 
   """
   def get(client, live_stream_id, options \\ []) do
-    Base.get(client, @path <> live_stream_id, query: options)
+    Base.get(client, "#{@path}/#{live_stream_id}", query: options)
   end
 
   @doc """
@@ -68,7 +68,7 @@ defmodule Mux.Video.LiveStreams do
 
   """
   def delete(client, live_stream_id) do
-    Base.delete(client, @path <> live_stream_id)
+    Base.delete(client, "#{@path}/#{live_stream_id}")
   end
 
   @doc """
@@ -85,7 +85,7 @@ defmodule Mux.Video.LiveStreams do
 
   """
   def signal_complete(client, live_stream_id) do
-    Base.put(client, @path <> live_stream_id <> "/complete")
+    Base.put(client, "#{@path}/#{live_stream_id}/complete")
   end
 
   @doc """
@@ -103,7 +103,7 @@ defmodule Mux.Video.LiveStreams do
 
   """
   def reset_stream_key(client, live_stream_id) do
-    Base.post(client, @path <> live_stream_id <> "/reset-stream-key")
+    Base.post(client, "#{@path}/#{live_stream_id}/reset-stream-key")
   end
 
   @doc """
@@ -120,7 +120,7 @@ defmodule Mux.Video.LiveStreams do
 
   """
   def create_playback_id(client, live_stream_id, params) do
-    Base.post(client, @path <> live_stream_id <> "/playback-ids", params)
+    Base.post(client, "#{@path}/#{live_stream_id}/playback-ids", params)
   end
 
   @doc """
@@ -137,6 +137,6 @@ defmodule Mux.Video.LiveStreams do
 
   """
   def delete_playback_id(client, live_stream_id, playback_id) do
-    Base.delete(client, @path <> live_stream_id <> "/playback-ids/" <> playback_id)
+    Base.delete(client, "#{@path}/#{live_stream_id}/playback-ids/#{playback_id}")
   end
 end
