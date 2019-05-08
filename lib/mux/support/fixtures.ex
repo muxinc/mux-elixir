@@ -52,6 +52,25 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def live_stream(_) do
+    %{
+      "stream_key":"54676b58-6b19-5acb-f5bf-3aa35222efc6",
+      "status":"idle",
+      "reconnect_window":60,
+      "playback_ids":[
+        %{
+          "policy":"public",
+          "id":"iOkfIGstt4u1eYdFcPKGTWKz75Acpv3w"
+        }
+      ],
+      "new_asset_settings":%{
+        "playback_policies":["public"]
+      },
+      "id":"aA02skpHXoLrbQm49qIzAG6RtewFOcDEY",
+      "created_at":"1557338261"
+    }
+  end
+
   def input_info() do
     %{
       "file" => %{
