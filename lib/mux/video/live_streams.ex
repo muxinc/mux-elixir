@@ -16,7 +16,7 @@ defmodule Mux.Video.LiveStreams do
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.create(client, %{playback_policy: "public", new_asset_settings: %{playback_policy: 'public'}})
       iex> live_stream
-      #{inspect Fixtures.live_stream()}
+      #{inspect(Fixtures.live_stream())}
   """
   def create(client, params) do
     Base.post(client, @path, params)
@@ -32,7 +32,7 @@ defmodule Mux.Video.LiveStreams do
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> {:ok, live_streams, _env} = Mux.Video.LiveStreams.list(client)
       iex> live_streams
-      #{inspect [Fixtures.live_stream(), Fixtures.live_stream()]}
+      #{inspect([Fixtures.live_stream(), Fixtures.live_stream()])}
 
   """
   def list(client, params \\ []), do: Base.get(client, @path, query: params)
@@ -45,9 +45,9 @@ defmodule Mux.Video.LiveStreams do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.get(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.get(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY")
       iex> live_stream
-      #{inspect Fixtures.live_stream()}
+      #{inspect(Fixtures.live_stream())}
 
   """
   def get(client, live_stream_id, options \\ []) do
@@ -62,7 +62,7 @@ defmodule Mux.Video.LiveStreams do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {status, _data, _env} = Mux.Video.LiveStreams.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      iex> {status, _data, _env} = Mux.Video.LiveStreams.delete(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY")
       iex> status
       :ok
 
@@ -79,7 +79,7 @@ defmodule Mux.Video.LiveStreams do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {status, _, _env} = Mux.Video.LiveStreams.signal_complete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      iex> {status, _, _env} = Mux.Video.LiveStreams.signal_complete(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY")
       iex> status
       :ok
 
@@ -97,9 +97,9 @@ defmodule Mux.Video.LiveStreams do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.reset_stream_key(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.reset_stream_key(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY")
       iex> live_stream
-      #{inspect Fixtures.live_stream()}  
+      #{inspect(Fixtures.live_stream())}
 
   """
   def reset_stream_key(client, live_stream_id) do
@@ -114,9 +114,9 @@ defmodule Mux.Video.LiveStreams do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.create_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{policy: "public"})
-      iex> live_stream
-      #{inspect Fixtures.playback_id}
+      iex> {:ok, playback_id, _env} = Mux.Video.LiveStreams.create_playback_id(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", %{policy: "public"})
+      iex> playback_id
+      #{inspect(Fixtures.playback_id())}
 
   """
   def create_playback_id(client, live_stream_id, params) do
@@ -131,7 +131,7 @@ defmodule Mux.Video.LiveStreams do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {status, _, _env} = Mux.Video.LiveStreams.delete_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> {status, _, _env} = Mux.Video.LiveStreams.delete_playback_id(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
       iex> status
       :ok
 
