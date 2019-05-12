@@ -6,7 +6,7 @@ defmodule Mux.MixProject do
   def project do
     [
       app: :mux,
-      version: "1.1.0",
+      version: "1.2.0",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -34,7 +34,7 @@ defmodule Mux.MixProject do
       {:tesla, "~> 1.0.0"},
       {:jason, ">= 1.0.0"},
       {:jose, "~> 1.9"},
-      {:ex_doc, "~> 0.18", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.20", only: :dev, runtime: false},
       {:mix_test_watch, "~> 0.5", only: :dev, runtime: false}
     ]
   end
