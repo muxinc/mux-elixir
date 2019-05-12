@@ -30,6 +30,7 @@ defmodule Mux.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:exvcr, "~> 0.10", only: :test},
       {:tesla, "~> 1.0.0"},
       {:jason, ">= 1.0.0"},
       {:jose, "~> 1.9"},
