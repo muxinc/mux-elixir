@@ -14,7 +14,7 @@ defmodule Mux.Video.LiveStreams do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.create(client, %{playback_policy: "public", new_asset_settings: %{playback_policy: 'public'}})
+      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.create(client, %{playback_policy: "public", new_asset_settings: %{playback_policy: "public"}})
       iex> live_stream
       #{inspect(Fixtures.live_stream())}
   """
