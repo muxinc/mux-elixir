@@ -13,8 +13,8 @@ defmodule Mux.Data.Incidents do
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, filters, _env} = Mux.Data.Incidents.list(client)
-      iex> filters
+      iex> {:ok, incidents, _env} = Mux.Data.Incidents.list(client)
+      iex> incidents
       #{inspect(Fixtures.incidents["data"])}
 
   """
