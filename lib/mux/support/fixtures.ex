@@ -443,6 +443,86 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def incidents() do
+    %{
+      "total_row_count" => 1,
+      "timeframe" => [
+        1563237968,
+        1563324368
+      ],
+      "data" => [
+        %{
+          "threshold" => 50,
+          "status" => "open",
+          "started_at" => "2019-07-17T00:46:08.344Z",
+          "severity" => "alert",
+          "sample_size_unit" => "views",
+          "sample_size" => 100,
+          "resolved_at" => nil,
+          "notifications" => [],
+          "notification_rules" => [],
+          "measurement" => "error_rate",
+          "measured_value_on_close" => nil,
+          "measured_value" => 55.7,
+          "incident_key" => "country=US",
+          "impact" => "*30 views* have been affected so far at a rate of *60 per hour*",
+          "id" => "pid1083",
+          "error_description" => "This is a message for this crazy error",
+          "description" => "Overall error-rate is significantly high (55.7%) due to an error of *This is a message for this crazy error*",
+          "breakdowns" => [
+            %{
+              "value" => "957",
+              "name" => "error_type_id",
+              "id" => "pid1077"
+            }
+          ],
+          "affected_views_per_hour_on_open" => 30,
+          "affected_views_per_hour" => 60,
+          "affected_views" => 30
+        }
+      ]
+    }
+  end
+
+  def incident() do
+    %{
+      "total_row_count" => nil,
+      "timeframe" => [
+        1563237972,
+        1563324372
+      ],
+      "data" => %{
+        "threshold" => 50,
+        "status" => "open",
+        "started_at" => "2019-07-16T23:46:12.047Z",
+        "severity" => "alert",
+        "sample_size_unit" => "views",
+        "sample_size" => 100,
+        "resolved_at" => nil,
+        "notifications" => [],
+        "notification_rules" => [],
+        "measurement" => "error_rate",
+        "measured_value_on_close" => nil,
+        "measured_value" => 55.7,
+        "incident_key" => "country=US",
+        "impact" => nil,
+        "id" => "ABCD1234",
+        "error_description" => "This is a message for this crazy error",
+        "description" => "Overall error-rate is significantly high (55.7%) due to an error of *This is a message for this crazy error*",
+        "breakdowns" => [
+          %{
+            "value" => "989",
+            "name" => "error_type_id",
+            "id" => "pid1949"
+          }
+        ],
+        "affected_views_per_hour_on_open" => nil,
+        "affected_views_per_hour" => nil,
+        "affected_views" => nil
+      }
+    }
+  end
+
   def insights() do
     %{
       "total_row_count" => 2,
