@@ -39,5 +39,22 @@ defmodule Mux.Data.Incidents do
     Base.get(client, build_base_path() <> "/#{id}")
   end
 
+  @doc """
+  Lists all the incidents that seem related to a specific incident.
+
+  Returns `{:ok, incidents, raw_env}`.
+
+  ## Examples
+
+      iex> client = Mux.client("my_token_id", "my_token_secret")
+      iex> {:ok, incidents, _env} = Mux.Data.Incidents.related(client, "ABCD1234", measurement: "median")
+      iex> incidents
+      #{inspect(Fixtures.related_incidents["data"])}
+
+  """
+  def related(client, id, params \\[]) do
+    Base.get(client, build_base_path() <> "/#{id}/related", params)
+  end
+
   defp build_base_path(), do: "/data/v1/incidents"
 end

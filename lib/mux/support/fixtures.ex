@@ -523,6 +523,47 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def related_incidents() do
+    %{
+      "total_row_count" => nil,
+      "timeframe" => [
+        1563237971,
+        1563324371
+      ],
+      "data" => [
+        %{
+          "threshold" => 50,
+          "status" => "open",
+          "started_at" => "2019-07-16T23:46:11.183Z",
+          "severity" => "alert",
+          "sample_size_unit" => "views",
+          "sample_size" => 100,
+          "resolved_at" => nil,
+          "notifications" => [],
+          "notification_rules" => [],
+          "measurement" => "error_rate",
+          "measured_value_on_close" => nil,
+          "measured_value" => 55.7,
+          "incident_key" => "country=US",
+          "impact" => "*30 views* have been affected so far at a rate of *25 per hour*",
+          "id" => "pid1759",
+          "error_description" => "This is a message for this crazy error",
+          "description" => "Overall error-rate is significantly high (55.7%) due to an error of *This is a message for this crazy error*",
+          "breakdowns" => [
+            %{
+              "value" => "983",
+              "name" => "error_type_id",
+              "id" => "pid1753"
+            }
+          ],
+          "affected_views_per_hour_on_open" => 30,
+          "affected_views_per_hour" => 25,
+          "affected_views" => 30
+        }
+      ]
+    }
+  end
+
   def insights() do
     %{
       "total_row_count" => 2,
