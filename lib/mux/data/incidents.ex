@@ -18,8 +18,8 @@ defmodule Mux.Data.Incidents do
       #{inspect(Fixtures.incidents["data"])}
 
   """
-  def list(client) do
-    Base.get(client, build_base_path())
+  def list(client, params \\[]) do
+    Base.get(client, build_base_path(), query: params)
   end
 
   @doc """
@@ -53,7 +53,7 @@ defmodule Mux.Data.Incidents do
 
   """
   def related(client, id, params \\[]) do
-    Base.get(client, build_base_path() <> "/#{id}/related", params)
+    Base.get(client, build_base_path() <> "/#{id}/related", query: params)
   end
 
   defp build_base_path(), do: "/data/v1/incidents"
