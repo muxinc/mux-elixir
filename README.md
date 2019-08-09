@@ -80,3 +80,36 @@ def create(conn, params, mux_client) do
   # ...
 end
 ```
+
+#### Verifying Webhook Signatures in Phoenix
+
+Note that when calling `Mux.Webhooks.verify_header/3` in Phoenix you will need to pass in the raw request
+body, not the parsed JSON. Phoenix has a nice solution for doing this [example](https://github.com/phoenixframework/phoenix/issues/459#issuecomment-440820663).
+
+Read more about verifying webhook signatures in [our guide](https://docs.mux.com/docs/webhook-security)
+
+```elixir
+defmodule MyAppWeb.BodyReader do
+  def read_body(conn, opts) do
+    {:ok, body, conn} = Plug.Conn.read_body(conn, opts)
+    body = [body | conn.private[:raw_body] || []]
+    conn = Plug.Conn.put_private(conn, :raw_body, body)
+    {:ok, body, conn}
+  end
+end
+
+# endpoint.ex
+plug Plug.Parsers,
+  parsers: [:urlencoded, :multipart, :json],
+  pass: ["*/*"],
+  body_reader: {MyAppWeb.BodyReader, :read_body, []},
+  json_decoder: Phoenix.json_library()
+
+# controller
+signature_header = List.first(get_req_header(conn, "mux-signature"))
+raw_body = List.first(conn.private[:raw_body])
+Mux.Webhooks.verify_header(raw_body, signature_header, secret)
+```
+
+You will most likely have to store the raw body before it gets parsed and then extract it later and
+pass it into `Mux.Webhooks.verify_header/3`
