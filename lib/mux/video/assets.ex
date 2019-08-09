@@ -15,7 +15,9 @@ defmodule Mux.Video.Assets do
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> Mux.Video.Assets.create(client, %{input: "https://example.com/video.mp4"})
-      {:ok, #{inspect Fixtures.asset(:create)}, #{inspect Fixtures.tesla_env({:asset, [:create]})}}
+      {:ok, #{inspect(Fixtures.asset(:create))}, #{
+    inspect(Fixtures.tesla_env({:asset, [:create]}))
+  }}
 
   """
   def create(client, params) do
@@ -32,7 +34,7 @@ defmodule Mux.Video.Assets do
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> {:ok, assets, _env} = Mux.Video.Assets.list(client)
       iex> assets
-      #{inspect [Fixtures.asset(), Fixtures.asset()]}
+      #{inspect([Fixtures.asset(), Fixtures.asset()])}
 
   """
   def list(client, params \\ []), do: Base.get(client, @path <> "/assets", query: params)
@@ -47,7 +49,7 @@ defmodule Mux.Video.Assets do
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> {:ok, asset, _env} = Mux.Video.Assets.get(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
       iex> asset
-      #{inspect Fixtures.asset()}
+      #{inspect(Fixtures.asset())}
 
   """
   def get(client, asset_id, options \\ []) do
@@ -81,7 +83,7 @@ defmodule Mux.Video.Assets do
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> {:ok, input_info, _env} = Mux.Video.Assets.input_info(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
       iex> input_info
-      [#{inspect Fixtures.input_info()}]
+      [#{inspect(Fixtures.input_info())}]
 
   """
   def input_info(client, asset_id, params \\ []) do

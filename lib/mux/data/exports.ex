@@ -18,7 +18,7 @@ defmodule Mux.Data.Exports do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, exports, _env} = Mux.Data.Exports.list(client)
       iex> exports
-      #{inspect Fixtures.exports["data"]}
+      #{inspect(Fixtures.exports()["data"])}
 
   """
   def list(client) do

@@ -8,10 +8,10 @@ defmodule Mux.Data.ErrorsTest do
   setup do
     client = Mux.Base.new("token_id", "token_secret")
 
-    mock fn
+    mock(fn
       %{method: :get, url: @base_url} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.errors()}
-    end
+    end)
 
     {:ok, %{client: client}}
   end

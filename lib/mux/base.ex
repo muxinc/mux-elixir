@@ -3,8 +3,8 @@ defmodule Mux.Base do
 
   use Tesla
 
-  plug Mux.Middleware.SimplifyResponse
-  plug Tesla.Middleware.JSON
+  plug(Mux.Middleware.SimplifyResponse)
+  plug(Tesla.Middleware.JSON)
 
   @defaults [
     base_url: "https://api.mux.com"
@@ -43,9 +43,9 @@ defmodule Mux.Base do
   def new(token_id, token_secret, opts \\ []) do
     opts = Keyword.merge(@defaults, opts) |> Enum.into(%{})
 
-    Tesla.build_client [
+    Tesla.build_client([
       {Tesla.Middleware.BaseUrl, opts.base_url},
       {Tesla.Middleware.BasicAuth, %{username: token_id, password: token_secret}}
-    ]
+    ])
   end
 end

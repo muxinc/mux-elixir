@@ -15,10 +15,10 @@ defmodule Mux.Data.Incidents do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, incidents, _env} = Mux.Data.Incidents.list(client, status: 'open', severity: 'alert')
       iex> incidents
-      #{inspect(Fixtures.incidents["data"])}
+      #{inspect(Fixtures.incidents()["data"])}
 
   """
-  def list(client, params \\[]) do
+  def list(client, params \\ []) do
     Base.get(client, build_base_path(), query: params)
   end
 
@@ -32,7 +32,7 @@ defmodule Mux.Data.Incidents do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, incident, _env} = Mux.Data.Incidents.get(client, "ABCD1234")
       iex> incident
-      #{inspect(Fixtures.incident["data"])}
+      #{inspect(Fixtures.incident()["data"])}
 
   """
   def get(client, id) do
@@ -49,10 +49,10 @@ defmodule Mux.Data.Incidents do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, incidents, _env} = Mux.Data.Incidents.related(client, "ABCD1234", measurement: "median")
       iex> incidents
-      #{inspect(Fixtures.related_incidents["data"])}
+      #{inspect(Fixtures.related_incidents()["data"])}
 
   """
-  def related(client, id, params \\[]) do
+  def related(client, id, params \\ []) do
     Base.get(client, build_base_path() <> "/#{id}/related", query: params)
   end
 

@@ -18,12 +18,12 @@ defmodule Mux.Data.VideoViews do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, views, _env} = Mux.Data.VideoViews.list(client)
       iex> views
-      #{inspect Fixtures.video_views["data"]}
+      #{inspect(Fixtures.video_views()["data"])}
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, views, _env} = Mux.Data.VideoViews.list(client, filters: ["browser:Chrome"], order_direction: "desc", page: 2)
       iex> views
-      #{inspect Fixtures.video_views["data"]}
+      #{inspect(Fixtures.video_views()["data"])}
 
   """
   def list(client, params \\ []) do

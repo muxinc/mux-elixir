@@ -11,8 +11,10 @@ defmodule Mux.Data.IncidentsTest do
     mock(fn
       %{method: :get, url: @base_url} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.incidents()}
+
       %{method: :get, url: @base_url <> "/ABCD1234"} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.incident()}
+
       %{method: :get, url: @base_url <> "/ABCD1234/related"} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.related_incidents()}
     end)

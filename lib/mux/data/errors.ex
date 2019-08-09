@@ -15,12 +15,12 @@ defmodule Mux.Data.Errors do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, errors, _env} = Mux.Data.Errors.list(client)
       iex> errors
-      #{inspect Fixtures.errors["data"]}
+      #{inspect(Fixtures.errors()["data"])}
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, errors, _env} = Mux.Data.Errors.list(client, filters: ["operating_system:windows"], timeframe: ["24:hours"])
       iex> errors
-      #{inspect Fixtures.errors["data"]}
+      #{inspect(Fixtures.errors()["data"])}
 
   """
   def list(client, params \\ []) do
