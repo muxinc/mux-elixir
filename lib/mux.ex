@@ -27,7 +27,13 @@ defmodule Mux do
       }
 
   """
-  def client(options \\ []), do: client(Application.get_env(:mux, :access_token_id), Application.get_env(:mux, :access_token_secret), options)
+  def client(options \\ []),
+    do:
+      client(
+        Application.get_env(:mux, :access_token_id),
+        Application.get_env(:mux, :access_token_secret),
+        options
+      )
 
   @doc """
   Creates a new connection struct that takes an access token ID and

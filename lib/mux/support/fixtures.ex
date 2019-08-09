@@ -447,8 +447,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => 1,
       "timeframe" => [
-        1563237968,
-        1563324368
+        1_563_237_968,
+        1_563_324_368
       ],
       "data" => [
         %{
@@ -468,7 +468,8 @@ defmodule Mux.Fixtures do
           "impact" => "*30 views* have been affected so far at a rate of *60 per hour*",
           "id" => "pid1083",
           "error_description" => "This is a message for this crazy error",
-          "description" => "Overall error-rate is significantly high (55.7%) due to an error of *This is a message for this crazy error*",
+          "description" =>
+            "Overall error-rate is significantly high (55.7%) due to an error of *This is a message for this crazy error*",
           "breakdowns" => [
             %{
               "value" => "957",
@@ -488,8 +489,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => nil,
       "timeframe" => [
-        1563237972,
-        1563324372
+        1_563_237_972,
+        1_563_324_372
       ],
       "data" => %{
         "threshold" => 50,
@@ -508,7 +509,8 @@ defmodule Mux.Fixtures do
         "impact" => nil,
         "id" => "ABCD1234",
         "error_description" => "This is a message for this crazy error",
-        "description" => "Overall error-rate is significantly high (55.7%) due to an error of *This is a message for this crazy error*",
+        "description" =>
+          "Overall error-rate is significantly high (55.7%) due to an error of *This is a message for this crazy error*",
         "breakdowns" => [
           %{
             "value" => "989",
@@ -527,8 +529,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => nil,
       "timeframe" => [
-        1563237971,
-        1563324371
+        1_563_237_971,
+        1_563_324_371
       ],
       "data" => [
         %{
@@ -548,7 +550,8 @@ defmodule Mux.Fixtures do
           "impact" => "*30 views* have been affected so far at a rate of *25 per hour*",
           "id" => "pid1759",
           "error_description" => "This is a message for this crazy error",
-          "description" => "Overall error-rate is significantly high (55.7%) due to an error of *This is a message for this crazy error*",
+          "description" =>
+            "Overall error-rate is significantly high (55.7%) due to an error of *This is a message for this crazy error*",
           "breakdowns" => [
             %{
               "value" => "983",

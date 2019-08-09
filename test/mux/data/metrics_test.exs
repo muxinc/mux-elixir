@@ -8,29 +8,37 @@ defmodule Mux.Data.MetricsTest do
   setup do
     client = Mux.Base.new("token_id", "token_secret")
 
-    mock fn
-      %{method: :get,
+    mock(fn
+      %{
+        method: :get,
         url: @base_url <> "/video_startup_time/breakdown",
-        query: [group_by: "browser"]} ->
+        query: [group_by: "browser"]
+      } ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.breakdown()}
-      %{method: :get,
+
+      %{
+        method: :get,
         url: @base_url <> "/video_startup_time/breakdown",
-        query: [group_by: "browser", measurement: "median", timeframe: ["6:hours"]]} ->
+        query: [group_by: "browser", measurement: "median", timeframe: ["6:hours"]]
+      } ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.breakdown()}
-      %{method: :get,
+
+      %{
+        method: :get,
         url: @base_url <> "/comparison",
-        query: [dimension: "browser", value: "Safari"]} ->
+        query: [dimension: "browser", value: "Safari"]
+      } ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.comparison()}
-      %{method: :get,
-        url: @base_url <> "/video_startup_time/insights"} ->
+
+      %{method: :get, url: @base_url <> "/video_startup_time/insights"} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.insights()}
-      %{method: :get,
-        url: @base_url <> "/video_startup_time/overall"} ->
+
+      %{method: :get, url: @base_url <> "/video_startup_time/overall"} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.overall()}
-      %{method: :get,
-        url: @base_url <> "/video_startup_time/timeseries"} ->
+
+      %{method: :get, url: @base_url <> "/video_startup_time/timeseries"} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.timeseries()}
-    end
+    end)
 
     {:ok, %{client: client}}
   end

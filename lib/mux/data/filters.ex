@@ -15,7 +15,7 @@ defmodule Mux.Data.Filters do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, filters, _env} = Mux.Data.Filters.list(client)
       iex> filters
-      #{inspect Fixtures.filters["data"]}
+      #{inspect(Fixtures.filters()["data"])}
 
   """
   def list(client) do
@@ -32,7 +32,7 @@ defmodule Mux.Data.Filters do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, filters, _env} = Mux.Data.Filters.get(client, "browser")
       iex> filters
-      #{inspect Fixtures.filters(:browser)["data"]}
+      #{inspect(Fixtures.filters(:browser)["data"])}
 
   """
   def get(client, value, params \\ []) do

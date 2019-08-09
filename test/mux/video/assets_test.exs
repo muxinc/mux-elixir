@@ -9,50 +9,76 @@ defmodule Mux.Video.AssetsTest do
   setup do
     client = Mux.Base.new("token_id", "token_secret", base_url: @base_url)
 
-    mock fn
+    mock(fn
       %{method: :get, url: @base_url <> "/video/v1/assets"} ->
-        %Tesla.Env{status: 200, body: %{
-          "data" => [
-            Mux.Fixtures.asset(),
-            Mux.Fixtures.asset(),
-          ]
-        }}
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => [
+              Mux.Fixtures.asset(),
+              Mux.Fixtures.asset()
+            ]
+          }
+        }
+
       %{method: :get, url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"} ->
-        %Tesla.Env{status: 201, body: %{
-          "data" => Mux.Fixtures.asset()
-        }}
-      %{method: :get, url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/input-info"} ->
-        %Tesla.Env{status: 201, body: %{
-          "data" => [Mux.Fixtures.input_info()]
-        }}
+        %Tesla.Env{
+          status: 201,
+          body: %{
+            "data" => Mux.Fixtures.asset()
+          }
+        }
+
+      %{
+        method: :get,
+        url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/input-info"
+      } ->
+        %Tesla.Env{
+          status: 201,
+          body: %{
+            "data" => [Mux.Fixtures.input_info()]
+          }
+        }
+
       %{method: :post} ->
-        %Tesla.Env{status: 201, body: %{
-          "data" => Mux.Fixtures.asset(:create)
-        }}
+        %Tesla.Env{
+          status: 201,
+          body: %{
+            "data" => Mux.Fixtures.asset(:create)
+          }
+        }
+
       %{method: :delete} ->
         %Tesla.Env{status: 204, body: ""}
-    end
+    end)
 
     {:ok, %{client: client}}
   end
 
   describe "list/2" do
     setup do
-      mock fn
+      mock(fn
         %{query: [page: 2]} ->
-          %Tesla.Env{status: 200, body: %{
-            "data" => [
-              Mux.Fixtures.asset()
-            ]
-          }}
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "data" => [
+                Mux.Fixtures.asset()
+              ]
+            }
+          }
+
         _ ->
-          %Tesla.Env{status: 200, body: %{
-            "data" => [
-              Mux.Fixtures.asset(),
-              Mux.Fixtures.asset(),
-            ]
-          }}
-      end
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "data" => [
+                Mux.Fixtures.asset(),
+                Mux.Fixtures.asset()
+              ]
+            }
+          }
+      end)
 
       :ok
     end
@@ -74,12 +100,15 @@ defmodule Mux.Video.AssetsTest do
 
   describe "create/2" do
     setup do
-      mock fn
+      mock(fn
         %{method: :post} ->
-          %Tesla.Env{status: 201, body: %{
-            "data" => Mux.Fixtures.asset(:create)
-          }}
-      end
+          %Tesla.Env{
+            status: 201,
+            body: %{
+              "data" => Mux.Fixtures.asset(:create)
+            }
+          }
+      end)
 
       :ok
     end
@@ -92,18 +121,22 @@ defmodule Mux.Video.AssetsTest do
 
   describe "get/2" do
     setup do
-      mock fn
+      mock(fn
         %{method: :get, url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"} ->
-          %Tesla.Env{status: 201, body: %{
-            "data" => Mux.Fixtures.asset(:created)
-          }}
-      end
+          %Tesla.Env{
+            status: 201,
+            body: %{
+              "data" => Mux.Fixtures.asset(:created)
+            }
+          }
+      end)
 
       :ok
     end
 
     test "gets an asset by ID", %{client: client} do
-      assert {:ok, %{"id" => "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"}, %Tesla.Env{}} = Assets.get(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      assert {:ok, %{"id" => "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"}, %Tesla.Env{}} =
+               Assets.get(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
     end
   end
 end

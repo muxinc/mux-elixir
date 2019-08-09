@@ -8,12 +8,13 @@ defmodule Mux.Data.VideoViewsTest do
   setup do
     client = Mux.Base.new("token_id", "token_secret")
 
-    mock fn
+    mock(fn
       %{method: :get, url: @base_url} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.video_views()}
+
       %{method: :get, url: @base_url <> "/k8n4aklUyrRDekILDWta1qSJqNFpYB7N50"} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.video_view()}
-    end
+    end)
 
     {:ok, %{client: client}}
   end

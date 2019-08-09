@@ -22,12 +22,12 @@ defmodule Mux.Data.Metrics do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, breakdowns, _env} = Mux.Data.Metrics.breakdown(client, "video_startup_time", "browser")
       iex> breakdowns
-      #{inspect Fixtures.breakdown["data"]}
+      #{inspect(Fixtures.breakdown()["data"])}
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, breakdowns, _env} = Mux.Data.Metrics.breakdown(client, "video_startup_time", "browser", measurement: "median", timeframe: ["6:hours"])
       iex> breakdowns
-      #{inspect Fixtures.breakdown["data"]}
+      #{inspect(Fixtures.breakdown()["data"])}
 
 
   """
@@ -46,7 +46,7 @@ defmodule Mux.Data.Metrics do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, comparison, _env} = Mux.Data.Metrics.comparison(client, "browser", "Safari")
       iex> comparison
-      #{inspect Fixtures.comparison["data"]}
+      #{inspect(Fixtures.comparison()["data"])}
 
   """
   def comparison(client, dimension, value, params \\ []) do
@@ -65,7 +65,7 @@ defmodule Mux.Data.Metrics do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, insights, _env} = Mux.Data.Metrics.insights(client, "video_startup_time")
       iex> insights
-      #{inspect Fixtures.insights["data"]}
+      #{inspect(Fixtures.insights()["data"])}
 
   """
   def insights(client, metric, params \\ []) do
@@ -83,7 +83,7 @@ defmodule Mux.Data.Metrics do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, insights, _env} = Mux.Data.Metrics.overall(client, "video_startup_time")
       iex> insights
-      #{inspect Fixtures.overall["data"]}
+      #{inspect(Fixtures.overall()["data"])}
 
   """
   def overall(client, metric, params \\ []) do
@@ -100,14 +100,12 @@ defmodule Mux.Data.Metrics do
       iex> client = Mux.client("my_token_id", "my_token_secret")
       iex> {:ok, timeseries, _env} = Mux.Data.Metrics.timeseries(client, "video_startup_time")
       iex> timeseries
-      #{inspect Fixtures.timeseries["data"]}
+      #{inspect(Fixtures.timeseries()["data"])}
 
   """
   def timeseries(client, metric, params \\ []) do
     Base.get(client, build_base_path(metric) <> "/timeseries", query: params)
   end
-
-
 
   defp build_base_path(), do: "/data/v1/metrics"
   defp build_base_path(metric), do: build_base_path() <> "/#{metric}"
