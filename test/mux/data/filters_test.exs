@@ -8,12 +8,13 @@ defmodule Mux.Data.FiltersTest do
   setup do
     client = Mux.Base.new("token_id", "token_secret")
 
-    mock fn
+    mock(fn
       %{method: :get, url: @base_url} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.filters()}
+
       %{method: :get, url: @base_url <> "/browser"} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.filters(:browser)}
-    end
+    end)
 
     {:ok, %{client: client}}
   end

@@ -8,18 +8,26 @@ defmodule Mux.PlaybackIdsTest do
   setup do
     client = Mux.Base.new("token_id", "token_secret", base_url: @base_url)
 
-    mock fn
+    mock(fn
       %{method: :post, url: @base_url} ->
-        %Tesla.Env{status: 201, body: %{
-          "data" => Mux.Fixtures.playback_id(),
-        }}
+        %Tesla.Env{
+          status: 201,
+          body: %{
+            "data" => Mux.Fixtures.playback_id()
+          }
+        }
+
       %{method: :get, url: @base_url <> "/FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"} ->
-        %Tesla.Env{status: 200, body: %{
-          "data" => Mux.Fixtures.playback_id(),
-        }}
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => Mux.Fixtures.playback_id()
+          }
+        }
+
       %{method: :delete, url: @base_url <> "/FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"} ->
         %Tesla.Env{status: 204, body: ""}
-    end
+    end)
 
     {:ok, %{client: client}}
   end

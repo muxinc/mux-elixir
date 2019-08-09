@@ -8,22 +8,34 @@ defmodule Mux.SigningKeysTest do
   setup do
     client = Mux.Base.new("token_id", "token_secret", base_url: @base_url)
 
-    mock fn
+    mock(fn
       %{method: :get, url: @base_url} ->
-        %Tesla.Env{status: 200, body: %{
-          "data" => [Mux.Fixtures.signing_key(), Mux.Fixtures.signing_key()],
-        }}
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => [Mux.Fixtures.signing_key(), Mux.Fixtures.signing_key()]
+          }
+        }
+
       %{method: :post, url: @base_url} ->
-        %Tesla.Env{status: 201, body: %{
-          "data" => Mux.Fixtures.signing_key(:create),
-        }}
+        %Tesla.Env{
+          status: 201,
+          body: %{
+            "data" => Mux.Fixtures.signing_key(:create)
+          }
+        }
+
       %{method: :get, url: @base_url <> "3kXq01SS00BQZqHHIq1egKAhuf7urAc400C"} ->
-        %Tesla.Env{status: 200, body: %{
-          "data" => Mux.Fixtures.signing_key(),
-        }}
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => Mux.Fixtures.signing_key()
+          }
+        }
+
       %{method: :delete, url: @base_url <> "3kXq01SS00BQZqHHIq1egKAhuf7urAc400C"} ->
         %Tesla.Env{status: 204, body: ""}
-    end
+    end)
 
     {:ok, %{client: client}}
   end

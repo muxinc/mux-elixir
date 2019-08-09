@@ -16,7 +16,7 @@ defmodule Mux.Video.PlaybackIds do
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> {:ok, playback_id, _env} = Mux.Video.PlaybackIds.create(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{policy: "public"})
       iex> playback_id
-      #{inspect Fixtures.playback_id}
+      #{inspect(Fixtures.playback_id())}
 
   """
   def create(client, asset_id, params) do
@@ -33,7 +33,7 @@ defmodule Mux.Video.PlaybackIds do
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> {:ok, playback_id, _env} = Mux.Video.PlaybackIds.get(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
       iex> playback_id
-      #{inspect Fixtures.playback_id}
+      #{inspect(Fixtures.playback_id())}
 
   """
   def get(client, asset_id, playback_id) do
