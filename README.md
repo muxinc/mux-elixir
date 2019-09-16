@@ -92,8 +92,7 @@ Read more about verifying webhook signatures in [our guide](https://docs.mux.com
 defmodule MyAppWeb.BodyReader do
   def read_body(conn, opts) do
     {:ok, body, conn} = Plug.Conn.read_body(conn, opts)
-    body = [body | conn.private[:raw_body] || []]
-    conn = Plug.Conn.put_private(conn, :raw_body, body)
+    conn = update_in(conn.assigns[:raw_body], &[body | &1 || []])
     {:ok, body, conn}
   end
 end
@@ -107,7 +106,7 @@ plug Plug.Parsers,
 
 # controller
 signature_header = List.first(get_req_header(conn, "mux-signature"))
-raw_body = List.first(conn.private[:raw_body])
+raw_body = List.first(conn.assigns.raw_body)
 Mux.Webhooks.verify_header(raw_body, signature_header, secret)
 ```
 
