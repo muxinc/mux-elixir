@@ -106,6 +106,26 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def simulcast_target do
+    %{
+      id: "vuOfW021mz5QA500wYEQ9SeUYvuYnpFz011mqSvski5T8claN02JN9ve2g",
+      url: "rtmp://live.example1.com/app",
+      stream_key: "abcdefgh",
+      passthrough: "Example 1"
+    }
+  end
+
+  def delivery_usage do
+    %{
+      passthrough: "Example 1",
+      delivered_seconds: 2040.533333,
+      created_at: "1566324794",
+      asset_state: "ready",
+      asset_id: "XwYTXo41yZD2xDIOKp2p00",
+      asset_duration: 480.533333
+    }
+  end
+
   def breakdown do
     %{
       "total_row_count" => 2,
