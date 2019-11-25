@@ -7,7 +7,7 @@ defmodule Mux.Video.DeliveryUsage do
   @path "/video/v1/delivery-usage"
 
   @doc """
-  Get delivery usage for a specified timeframe.
+  Get delivery usage for a specified timeframe. [API Documentation](https://docs.mux.com/reference#list-usage)
 
   Returns `{:ok, delivery_usage, %Tesla.Env{}}`.
 
