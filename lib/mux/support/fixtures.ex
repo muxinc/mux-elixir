@@ -106,6 +106,15 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def simulcast_target do
+    %{
+      id: "vuOfW021mz5QA500wYEQ9SeUYvuYnpFz011mqSvski5T8claN02JN9ve2g",
+      url: "rtmp://live.example1.com/app",
+      stream_key: "abcdefgh",
+      passthrough: "Example 1"
+    }
+  end
+
   def breakdown do
     %{
       "total_row_count" => 2,

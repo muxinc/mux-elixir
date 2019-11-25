@@ -139,4 +139,55 @@ defmodule Mux.Video.LiveStreams do
   def delete_playback_id(client, live_stream_id, playback_id) do
     Base.delete(client, "#{@path}/#{live_stream_id}/playback-ids/#{playback_id}")
   end
+
+  @doc """
+  Create a live stream simulcast target
+
+  Returns a tuple such as `{:ok, simulcast_target, %Tesla.Env{}}`
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, simulcast_target, _env} = Mux.Video.LiveStreams.create_simulcast_target(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", %{url: "rtmp://live.example.com/app", stream_key: "abcdefgh"})
+      iex> simulcast_target
+      #{inspect(Fixtures.simulcast_target())}
+
+  """
+  def create_simulcast_target(client, live_stream_id, params) do
+    Base.post(client, "#{@path}/#{live_stream_id}/simulcast-targets", params)
+  end
+
+  @doc """
+  Retrieve a live stream simulcast target
+
+  Returns a tuple such as `{:ok, simulcast_target, %Tesla.Env{}}`
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, simulcast_target, _env} = Mux.Video.LiveStreams.get_simulcast_target(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", "vuOfW021mz5QA500wYEQ9SeUYvuYnpFz011mqSvski5T8claN02JN9ve2g")
+      iex> simulcast_target
+      #{inspect(Fixtures.simulcast_target())}
+
+  """
+  def get_simulcast_target(client, live_stream_id, simulcast_target_id) do
+    Base.get(client, "#{@path}/#{live_stream_id}/simulcast-targets/#{simulcast_target_id}")
+  end
+
+  @doc """
+  Delete a live stream simulcast target
+
+  Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {status, _, _env} = Mux.Video.LiveStreams.delete_simulcast_target(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", "vuOfW021mz5QA500wYEQ9SeUYvuYnpFz011mqSvski5T8claN02JN9ve2g")
+      iex> status
+      :ok
+
+  """
+  def delete_simulcast_target(client, live_stream_id, simulcast_target_id) do
+    Base.delete(client, "#{@path}/#{live_stream_id}/simulcast-targets/#{simulcast_target_id}")
+  end
 end
