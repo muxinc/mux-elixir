@@ -106,6 +106,18 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def track do
+    %{
+      type: "text",
+      text_type: "subtitles",
+      status: "preparing",
+      passthrough: "English",
+      name: "English",
+      language_code: "en",
+      id: "2"
+    }
+  end
+
   def simulcast_target do
     %{
       id: "vuOfW021mz5QA500wYEQ9SeUYvuYnpFz011mqSvski5T8claN02JN9ve2g",
