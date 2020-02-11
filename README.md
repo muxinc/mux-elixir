@@ -121,6 +121,5 @@ pass it into `Mux.Webhooks.verify_header/3`
 1. Update version in README
 1. Commit and open a PR
 1. After code is merged, tag master ex: `git tag v1.6.0` and `git push --tags`
-1. run `mix build`
 1. run `mix publish`
 
