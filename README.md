@@ -112,3 +112,15 @@ Mux.Webhooks.verify_header(raw_body, signature_header, secret)
 
 You will most likely have to store the raw body before it gets parsed and then extract it later and
 pass it into `Mux.Webhooks.verify_header/3`
+
+---
+
+## Publishing new versions
+
+1. Update version in mix.exs
+1. Update version in README
+1. Commit and open a PR
+1. After code is merged, tag master ex: `git tag v1.6.0` and `git push --tags`
+1. run `mix build`
+1. run `mix publish`
+
