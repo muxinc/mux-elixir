@@ -53,7 +53,7 @@ defmodule Mux.Data.RealTime do
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, breakdown, _env} = Mux.Data.RealTime.breakdown(client, 'playback-failure-percentage', dimension: 'country', timestamp: 1_547_853_000, filters: ['operating_system:windows'])
+      iex> {:ok, breakdown, _env} = Mux.Data.RealTime.breakdown(client, "playback-failure-percentage", dimension: "country", timestamp: 1_547_853_000, filters: ["operating_system:windows"])
       iex> breakdown
       #{inspect(Fixtures.realtime_breakdown()["data"])}
 
@@ -70,7 +70,7 @@ defmodule Mux.Data.RealTime do
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, histogram_timeseries, _env} = Mux.Data.RealTime.histogram_timeseries(client, 'video-startup-time', filters: ['operating_system:windows', 'country:US'])
+      iex> {:ok, histogram_timeseries, _env} = Mux.Data.RealTime.histogram_timeseries(client, "video-startup-time", filters: ["operating_system:windows", "country:US"])
       iex> histogram_timeseries
       #{inspect(Fixtures.realtime_histogram_timeseries()["data"])}
 
@@ -87,7 +87,7 @@ defmodule Mux.Data.RealTime do
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, timeseries, _env} = Mux.Data.RealTime.timeseries(client, 'playback-failure-percentage', filters: ['operating_system:windows', 'country:US'])
+      iex> {:ok, timeseries, _env} = Mux.Data.RealTime.timeseries(client, "playback-failure-percentage", filters: ["operating_system:windows", "country:US"])
       iex> timeseries
       #{inspect(Fixtures.realtime_timeseries()["data"])}
 

@@ -1003,8 +1003,8 @@ defmodule Mux.Fixtures do
     %{
       "total_row_count" => nil,
       "timeframe" => [
-       1_547_853_000,
-       1_547_853_000,
+        1_547_853_000,
+        1_547_853_000
       ],
       "data" => [
         %{
