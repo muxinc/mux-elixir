@@ -19,7 +19,7 @@ Add `mux` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:mux, "~> 1.6.0"}
+    {:mux, "~> 1.7.0"}
   ]
 end
 ```
@@ -120,6 +120,6 @@ pass it into `Mux.Webhooks.verify_header/3`
 1. Update version in mix.exs
 1. Update version in README
 1. Commit and open a PR
-1. After code is merged, tag master ex: `git tag v1.6.0` and `git push --tags`
+1. After code is merged, tag master ex: `git tag v1.7.0` and `git push --tags`
 1. run `mix publish`
 
