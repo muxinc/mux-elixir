@@ -48,6 +48,28 @@ defmodule Mux.Video.AssetsTest do
           }
         }
 
+      %{
+        method: :put,
+        url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/mp4-support"
+      } ->
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => Mux.Fixtures.asset()
+          }
+        }
+
+      %{
+        method: :put,
+        url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/master-access"
+      } ->
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => Mux.Fixtures.asset()
+          }
+        }
+
       %{method: :delete} ->
         %Tesla.Env{status: 204, body: ""}
     end)
