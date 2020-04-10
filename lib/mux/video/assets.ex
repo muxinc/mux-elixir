@@ -103,7 +103,7 @@ defmodule Mux.Video.Assets do
       #{inspect(Fixtures.asset())}
 
   """
-  def update_mp4_support(client, asset_id, params \\ []) do
+  def update_mp4_support(client, asset_id, params) do
     Base.put(client, @path <> "/assets/" <> asset_id <> "/mp4-support", params)
   end
 
@@ -120,7 +120,7 @@ defmodule Mux.Video.Assets do
       #{inspect(Fixtures.asset())}
 
   """
-  def update_master_access(client, asset_id, params \\ []) do
+  def update_master_access(client, asset_id, params) do
     Base.put(client, @path <> "/assets/" <> asset_id <> "/master-access", params)
   end
 end
