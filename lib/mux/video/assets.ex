@@ -89,4 +89,38 @@ defmodule Mux.Video.Assets do
   def input_info(client, asset_id, params \\ []) do
     Base.get(client, @path <> "/assets/" <> asset_id <> "/input-info", query: params)
   end
+
+  @doc """
+  Updates an asset's mp4 support
+
+  Returns a tuple such as `{:ok, asset, %Telsa.Env{}}`
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, asset, _env} = Mux.Video.Assets.update_mp4_support(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{mp4_support: "standard"})
+      iex> asset
+      #{inspect(Fixtures.asset())}
+
+  """
+  def update_mp4_support(client, asset_id, params \\ []) do
+    Base.put(client, @path <> "/assets/" <> asset_id <> "/mp4-support", params)
+  end
+
+  @doc """
+  Updates an asset's master access
+
+  Returns a tuple such as `{:ok, asset, %Telsa.Env{}}`
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, asset, _env} = Mux.Video.Assets.update_master_access(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{master_access: "temporary"})
+      iex> asset
+      #{inspect(Fixtures.asset())}
+
+  """
+  def update_master_access(client, asset_id, params \\ []) do
+    Base.put(client, @path <> "/assets/" <> asset_id <> "/master-access", params)
+  end
 end

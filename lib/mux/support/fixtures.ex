@@ -45,6 +45,8 @@ defmodule Mux.Fixtures do
       ],
       "max_stored_resolution" => "HD",
       "max_stored_frame_rate" => 29.97,
+      "mp4_support" => "none",
+      "master_access" => "none",
       "id" => "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc",
       "duration" => 23.872,
       "created_at" => "1521503163",

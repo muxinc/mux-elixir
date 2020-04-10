@@ -6,7 +6,7 @@ defmodule Mux.MixProject do
   def project do
     [
       app: :mux,
-      version: "1.7.0",
+      version: "1.8.0",
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
