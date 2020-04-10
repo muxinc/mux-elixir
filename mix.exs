@@ -31,7 +31,7 @@ defmodule Mux.MixProject do
   defp deps do
     [
       {:exvcr, "~> 0.10", only: :test},
-      {:tesla, ">= 1.0.0"},
+      {:tesla, "~> 1.2"},
       {:jason, ">= 1.0.0"},
       {:jose, "~> 1.9"},
       {:ex_doc, "~> 0.20", only: :dev, runtime: false},
