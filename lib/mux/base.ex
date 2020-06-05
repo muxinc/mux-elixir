@@ -43,7 +43,7 @@ defmodule Mux.Base do
   def new(token_id, token_secret, opts \\ []) do
     opts = Keyword.merge(@defaults, opts) |> Enum.into(%{})
 
-    Tesla.client([
+    Tesla.build_client([
       {Tesla.Middleware.BaseUrl, opts.base_url},
       {Tesla.Middleware.BasicAuth, %{username: token_id, password: token_secret}}
     ])
