@@ -22,13 +22,13 @@ defmodule Mux.WebhooksTest do
 
     test "returns :error with the correct message if the payload doesn't have a matching signature" do
       payload = "{\"test\": \"some other body\"}"
-      signature = Mux.Webhooks.generate_signature(payload, @secret)
+      signature = Mux.Webhooks.TestUtils.generate_signature(payload, @secret)
       assert {:error, message} = Mux.Webhooks.verify_header(@payload, signature, @secret)
       assert message === "No signatures found matching the expected signature for payload"
     end
 
     test "returns :ok if the signature is valid" do
-      signature = Mux.Webhooks.generate_signature(@payload, @secret)
+      signature = Mux.Webhooks.TestUtils.generate_signature(@payload, @secret)
       assert :ok = Mux.Webhooks.verify_header(@payload, signature, @secret)
     end
   end

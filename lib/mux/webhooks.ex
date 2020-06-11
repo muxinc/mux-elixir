@@ -6,38 +6,6 @@ defmodule Mux.Webhooks do
   @expected_scheme "v1"
 
   @doc """
-  Generates a webhook signature. Pass in the raw request body and the
-  webhook "secret". You may also pass in the desired signature scheme.
-  Currently, the only valid signature scheme is `"v1"`, which is also the
-  default one if not set explicitly. Any invalid signature scheme will fall
-  back to the default.
-
-  Note that this function is intended for testing against malformed or
-  malicious webhook requests, so you should use a fake webhook "secret".
-
-  Returns the relevant HTTP header value as a string.
-
-  ## Examples
-
-      iex> signature = Mux.Webhooks.generate_signature(payload, fake_secret)
-      "t=1565125718,v1=854ece4c22acef7c66b57d4e504153bc512595e8e9c772ece2a68150548c19a7"
-
-  You can then verify the header, e.g.:
-
-      iex> Mux.Webhooks.verify_header(payload, signature, fake_secret)
-      :ok
-  """
-  def generate_signature(payload, secret, _scheme \\ @expected_scheme) do
-    # As long the `v1` will be the only signature scheme available, we can
-    # simply ignore `_scheme`.
-    timestamp = System.system_time(:second)
-    signed_payload = "#{timestamp}.#{payload}"
-    signature = compute_signature(signed_payload, secret)
-
-    "t=#{timestamp},#{@expected_scheme}=#{signature}"
-  end
-
-  @doc """
   Verifies a webhook signature. Pass in the raw request body, the
   signature header that came with the webhook request ('Mux-Signature')
   and the webhook "secret" from your webhooks dashboard. Note that the
