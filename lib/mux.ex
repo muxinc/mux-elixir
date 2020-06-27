@@ -1,9 +1,9 @@
 defmodule Mux do
-  @moduledoc """
-  Core module for Mux. You can use the `client` method to create authenticated
-  [Tesla client](https://hexdocs.pm/tesla/Tesla.html#build_client/2), which is passed to each
-  request from then on.
-  """
+  @external_resource "README.md"
+  @moduledoc @external_resource
+             |> File.read!()
+             |> String.split("<!-- MDOC !-->")
+             |> Enum.fetch!(1)
 
   @doc """
   Same as `Mux.client/3`, but will attempt to pull your access token ID and secret from the
