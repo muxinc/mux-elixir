@@ -3,10 +3,12 @@ defmodule Mux.MixProject do
 
   @github_url "https://github.com/muxinc/mux-elixir"
 
+  @version "1.8.1"
+
   def project do
     [
       app: :mux,
-      version: "1.8.1",
+      version: @version,
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -16,7 +18,7 @@ defmodule Mux.MixProject do
       name: "Mux",
       source_url: @github_url,
       homepage_url: "https://mux.com",
-      docs: [logo: "logo.png", extras: ["README.md"]]
+      docs: docs()
     ]
   end
 
@@ -36,6 +38,24 @@ defmodule Mux.MixProject do
       {:jose, "~> 1.9"},
       {:ex_doc, "~> 0.20", only: :dev, runtime: false},
       {:mix_test_watch, "~> 0.5", only: :dev, runtime: false}
+    ]
+  end
+
+  defp docs do
+    [
+      groups_for_modules: groups_for_modules(),
+      logo: "logo.png",
+      main: "Mux",
+      nest_modules_by_prefix: [Mux.Data, Mux.Video],
+      source_ref: "v#{@version}",
+      source_url: "https://github.com/muxinc/mux-elixir"
+    ]
+  end
+
+  defp groups_for_modules do
+    [
+      Data: ~r/Mux.Data.*/,
+      Video: ~r/Mux.Video.*/
     ]
   end
 
