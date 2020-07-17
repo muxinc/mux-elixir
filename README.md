@@ -4,6 +4,8 @@
 
 ![build status](https://travis-ci.org/muxinc/mux-elixir.svg?branch=master)
 
+<!-- MDOC !-->
+
 Official Mux API wrapper for Elixir projects, supporting both Mux Data and Mux Video.
 
 [Mux Video](https://mux.com/video) is an API-first platform, powered by data and designed by video experts to make beautiful video possible for every development team.
@@ -112,6 +114,8 @@ Mux.Webhooks.verify_header(raw_body, signature_header, secret)
 
 You will most likely have to store the raw body before it gets parsed and then extract it later and
 pass it into `Mux.Webhooks.verify_header/3`
+
+<!-- MDOC !-->
 
 ---
 
