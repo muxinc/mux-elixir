@@ -191,4 +191,38 @@ defmodule Mux.Video.LiveStreams do
   def delete_simulcast_target(client, live_stream_id, simulcast_target_id) do
     Base.delete(client, "#{@path}/#{live_stream_id}/simulcast-targets/#{simulcast_target_id}")
   end
+
+  @doc """
+  Enable a live stream is finished. [API Documentation](https://docs.mux.com/reference#enable-a-live-stream)
+
+  Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {status, _, _env} = Mux.Video.LiveStreams.enable(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY")
+      iex> status
+      :ok
+
+  """
+  def enable(client, live_stream_id) do
+    Base.put(client, "#{@path}/#{live_stream_id}/enable", %{})
+  end
+
+  @doc """
+  Disable a live stream is finished. [API Documentation](https://docs.mux.com/reference#disable-a-live-stream)
+
+  Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {status, _, _env} = Mux.Video.LiveStreams.disable(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY")
+      iex> status
+      :ok
+
+  """
+  def disable(client, live_stream_id) do
+    Base.put(client, "#{@path}/#{live_stream_id}/disable", %{})
+  end
 end

@@ -54,7 +54,7 @@ defmodule Mux.Video.LiveStreamsTest do
 
       %{method: :put, url: @base_url <> "/aA02skpHXoLrbQm49qIzAG6RtewFOcDEY/complete"} ->
         %Tesla.Env{
-          status: 204,
+          status: 200,
           body: ""
         }
 
@@ -98,6 +98,23 @@ defmodule Mux.Video.LiveStreamsTest do
       } ->
         %Tesla.Env{
           status: 204,
+          body: %{
+            "data" => ""
+          }
+        }
+      
+      %{method: :put, url: @base_url <> "/aA02skpHXoLrbQm49qIzAG6RtewFOcDEY/enable"} ->
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => ""
+          }
+        }
+      
+      
+      %{method: :put, url: @base_url <> "/aA02skpHXoLrbQm49qIzAG6RtewFOcDEY/disable"} ->
+        %Tesla.Env{
+          status: 200,
           body: %{
             "data" => ""
           }
