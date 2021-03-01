@@ -37,8 +37,14 @@ defmodule Mux.Webhooks.TestUtils do
     "t=#{timestamp},#{@default_scheme}=#{signature}"
   end
 
-  defp compute_signature(payload, secret) do
-    :crypto.hmac(:sha256, secret, payload)
+  def compute_signature(payload, secret) do
+    hmac(:sha256, secret, payload)
     |> Base.encode16(case: :lower)
+  end
+
+  if Code.ensure_loaded?(:crypto) and function_exported?(:crypto, :mac, 4) do
+    defp hmac(digest, key, payload), do: :crypto.mac(:hmac, digest, key, payload)
+  else
+    defp hmac(digest, key, payload), do: :crypto.hmac(digest, key, payload)
   end
 end
