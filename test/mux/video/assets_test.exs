@@ -70,23 +70,36 @@ defmodule Mux.Video.AssetsTest do
           }
         }
 
-      %{method: :post, url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/playback-ids"} ->
+      %{
+        method: :post,
+        url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/playback-ids"
+      } ->
         %Tesla.Env{
           status: 201,
           body: %{
-            "data" => Mux.Fixtures.asset()
+            "data" => Mux.Fixtures.asset(:create)
           }
         }
 
-      %{method: :get, url: @base_url <> "video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/playback-ids/FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"} ->
+      %{
+        method: :get,
+        url:
+          @base_url <>
+              "video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/playback-ids/FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"
+      } ->
         %Tesla.Env{
           status: 200,
           body: %{
-            "data" => Mux.Fixtures.asset()
+            "data" => Mux.Fixtures.playback_id()
           }
         }
 
-      %{method: :delete, url: @base_url <> "video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/playback-ids/FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"} ->
+      %{
+        method: :delete,
+        url:
+          @base_url <>
+              "video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc/playback-ids/FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"
+      } ->
         %Tesla.Env{status: 204, body: ""}
 
       %{method: :delete} ->

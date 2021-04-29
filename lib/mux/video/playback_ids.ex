@@ -24,5 +24,4 @@ defmodule Mux.Video.PlaybackIds do
   def get(client, playback_id) do
     Base.get(client, "#{@path}/#{playback_id}")
   end
-
 end

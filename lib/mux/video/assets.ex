@@ -124,17 +124,17 @@ defmodule Mux.Video.Assets do
     Base.put(client, "#{@path}/#{asset_id}/master-access", params)
   end
 
-    @doc """
+  @doc """
   Create a new playback ID.
 
-  Returns `{:ok, playback_id, raw_env}`.
+  Returns `{:ok, playback_id, %Telsa.Client{}}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> {:ok, playback_id, _env} = Mux.Video.Assets.create_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{policy: "public"})
       iex> playback_id
-      #{inspect(Fixtures.playback_id())}
+      #{inspect(Fixtures.asset(:create))}
 
   """
   def create_playback_id(client, asset_id, params) do
@@ -142,16 +142,16 @@ defmodule Mux.Video.Assets do
   end
 
   @doc """
-  Retrieve a playback ID by ID.
+  Create a new playback ID.
 
-  Returns `{:ok, playback_id, raw_env}`.
+  Returns `{:ok, playback_id, %Telsa.Client{}}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, playback_id, _env} = Mux.Video.Assets.get_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> {:ok, playback_id, _env} = Mux.Video.Assets.create_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{policy: "public"})
       iex> playback_id
-      #{inspect(Fixtures.playback_id())}
+      #{inspect(Fixtures.asset(:create))}
 
   """
   def get_playback_id(client, asset_id, playback_id) do
@@ -161,7 +161,7 @@ defmodule Mux.Video.Assets do
   @doc """
   Delete a playback ID.
 
-  Returns `{:ok, nil, raw_env}`.
+  Returns `{:ok, nil, %Telsa.Env{}}`.
 
   ## Examples
 
