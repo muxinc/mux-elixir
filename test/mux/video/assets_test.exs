@@ -77,7 +77,7 @@ defmodule Mux.Video.AssetsTest do
         %Tesla.Env{
           status: 201,
           body: %{
-            "data" => Mux.Fixtures.asset(:create)
+            "data" => Mux.Fixtures.playback_id()
           }
         }
 
