@@ -13,7 +13,7 @@ defmodule Mux.Video.PlaybackIdsTest do
         %Tesla.Env{
           status: 200,
           body: %{
-            "data" => Mux.Fixtures.identifier()
+            "data" => Mux.Fixtures.playback_id_full()
           }
         }
     end)

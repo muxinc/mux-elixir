@@ -73,7 +73,7 @@ defmodule Mux.Fixtures do
     }
   end
 
-  def identifier do
+  def playback_id_full do
     %{
       "policy" => "public",
       "object" => %{
