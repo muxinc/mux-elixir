@@ -83,11 +83,6 @@ defmodule Mux.Webhooks do
     end
   end
 
-  defp compute_signature(payload, secret) do
-    :crypto.hmac(:sha256, secret, payload)
-    |> Base.encode16(case: :lower)
-  end
-
   defp secure_equals?(input, expected) when byte_size(input) == byte_size(expected) do
     input = String.to_charlist(input)
     expected = String.to_charlist(expected)
@@ -105,5 +100,16 @@ defmodule Mux.Webhooks do
     acc
     |> bor(input_codepoint ^^^ expected_codepoint)
     |> secure_compare(input, expected)
+  end
+
+  def compute_signature(payload, secret) do
+    hmac(:sha256, secret, payload)
+    |> Base.encode16(case: :lower)
+  end
+
+  if Code.ensure_loaded?(:crypto) and function_exported?(:crypto, :mac, 4) do
+    defp hmac(digest, key, payload), do: :crypto.mac(:hmac, digest, key, payload)
+  else
+    defp hmac(digest, key, payload), do: :crypto.hmac(digest, key, payload)
   end
 end
