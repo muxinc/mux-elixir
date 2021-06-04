@@ -21,7 +21,7 @@ Add `mux` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:mux, "~> 1.9.0"}
+    {:mux, "~> 2.0.0"}
   ]
 end
 ```

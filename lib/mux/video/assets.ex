@@ -4,7 +4,7 @@ defmodule Mux.Video.Assets do
   """
   alias Mux.{Base, Fixtures}
 
-  @path "/video/v1"
+  @path "/video/v1/assets"
 
   @doc """
   Create a new asset.
@@ -21,7 +21,7 @@ defmodule Mux.Video.Assets do
 
   """
   def create(client, params) do
-    Base.post(client, @path <> "/assets", params)
+    Base.post(client, @path, params)
   end
 
   @doc """
@@ -37,7 +37,7 @@ defmodule Mux.Video.Assets do
       #{inspect([Fixtures.asset(), Fixtures.asset()])}
 
   """
-  def list(client, params \\ []), do: Base.get(client, @path <> "/assets", query: params)
+  def list(client, params \\ []), do: Base.get(client, @path, query: params)
 
   @doc """
   Retrieve an asset by ID.
@@ -53,7 +53,7 @@ defmodule Mux.Video.Assets do
 
   """
   def get(client, asset_id, options \\ []) do
-    Base.get(client, @path <> "/assets/" <> asset_id, query: options)
+    Base.get(client, "#{@path}/#{asset_id}", query: options)
   end
 
   @doc """
@@ -70,7 +70,7 @@ defmodule Mux.Video.Assets do
 
   """
   def delete(client, asset_id, params \\ []) do
-    Base.delete(client, @path <> "/assets/" <> asset_id, query: params)
+    Base.delete(client, "#{@path}/#{asset_id}", query: params)
   end
 
   @doc """
@@ -87,7 +87,7 @@ defmodule Mux.Video.Assets do
 
   """
   def input_info(client, asset_id, params \\ []) do
-    Base.get(client, @path <> "/assets/" <> asset_id <> "/input-info", query: params)
+    Base.get(client, "#{@path}/#{asset_id}/input-info", query: params)
   end
 
   @doc """
@@ -104,7 +104,7 @@ defmodule Mux.Video.Assets do
 
   """
   def update_mp4_support(client, asset_id, params) do
-    Base.put(client, @path <> "/assets/" <> asset_id <> "/mp4-support", params)
+    Base.put(client, "#{@path}/#{asset_id}/mp4-support", params)
   end
 
   @doc """
@@ -121,6 +121,57 @@ defmodule Mux.Video.Assets do
 
   """
   def update_master_access(client, asset_id, params) do
-    Base.put(client, @path <> "/assets/" <> asset_id <> "/master-access", params)
+    Base.put(client, "#{@path}/#{asset_id}/master-access", params)
+  end
+
+  @doc """
+  Create a new playback ID.
+
+  Returns `{:ok, playback_id, %Telsa.Env{}}`.
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, playback_id, _env} = Mux.Video.Assets.create_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{policy: "public"})
+      iex> playback_id
+      #{inspect(Fixtures.playback_id)}
+
+  """
+  def create_playback_id(client, asset_id, params) do
+    Base.post(client, "#{@path}/#{asset_id}/playback-ids", params)
+  end
+
+  @doc """
+  Retrieve a playback ID.
+
+  Returns `{:ok, playback_id, %Telsa.Env{}}`.
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, playback_id, _env} = Mux.Video.Assets.get_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> playback_id
+      #{inspect(Fixtures.playback_id)}
+
+  """
+  def get_playback_id(client, asset_id, playback_id) do
+    Base.get(client, "#{@path}/#{asset_id}/playback-ids/#{playback_id}")
+  end
+
+  @doc """
+  Delete a playback ID.
+
+  Returns `{:ok, nil, %Telsa.Env{}}`.
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {status, "", _env} = Mux.Video.Assets.delete_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> status
+      :ok
+
+  """
+  def delete_playback_id(client, asset_id, playback_id) do
+    Base.delete(client, "#{@path}/#{asset_id}/playback-ids/#{playback_id}")
   end
 end

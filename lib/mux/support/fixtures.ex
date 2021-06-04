@@ -73,6 +73,17 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def playback_id_full do
+    %{
+      "policy" => "public",
+      "object" => %{
+        "type" => "live_stream",
+        "id" => "ZXs9U1Wqr3C4GBVCOYRQOA00lLtijnVhehJIb8tlDzL00"
+      },
+      "id" => "7IxC7stYLro5Z4nEs97J02OkLEKFME6mvhnuRJybhRKU"
+    }
+  end
+
   def input_info() do
     %{
       "file" => %{
