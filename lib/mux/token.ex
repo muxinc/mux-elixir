@@ -3,7 +3,7 @@ defmodule Mux.Token do
   This module provides helpers for working with Playback IDs with `signed` playback policies. [API Documentation](https://docs.mux.com/docs/security-signed-urls)
   """
 
-  @type signature_type :: :video | :thumbnail | :gif
+  @type signature_type :: :video | :thumbnail | :gif | :storyboard
   @type option ::
           {:type, signature_type}
           | {:expiration, integer}
@@ -18,7 +18,7 @@ defmodule Mux.Token do
   `options` object can include:
   - `options.token_id`: Signing token ID (defaults to `Application.get_env(:mux, :signing_token_id)`)
   - `options.token_secret`: Signing token secret (defaults to `Application.get_env(:mux, :signing_token_secret)`)
-  - `options.type`: Type of signature to create. Defaults to `:video`, options are: `:video, :gif, :thumbnail`
+  - `options.type`: Type of signature to create. Defaults to `:video`, options are: `:video, :gif, :thumbnail, :storyboard`
   - `options.expiration`: Seconds the token is valid for. Defaults to 7 days from now (604,800)
   - `options.params`: Map that includes any additional query params. For thumbnails this would be values like `height` or `time`.
   """
@@ -77,4 +77,5 @@ defmodule Mux.Token do
   defp type_to_aud(:video), do: "v"
   defp type_to_aud(:thumbnail), do: "t"
   defp type_to_aud(:gif), do: "g"
+  defp type_to_aud(:storyboard), do: "s"
 end
