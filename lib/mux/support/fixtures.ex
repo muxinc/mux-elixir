@@ -114,40 +114,40 @@ defmodule Mux.Fixtures do
 
   def playback_id do
     %{
-      policy: "public",
-      id: "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"
+      "policy" => "public",
+      "id" => "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE"
     }
   end
 
   def track do
     %{
-      type: "text",
-      text_type: "subtitles",
-      status: "preparing",
-      passthrough: "English",
-      name: "English",
-      language_code: "en",
-      id: "2"
+      "type" => "text",
+      "text_type" => "subtitles",
+      "status" => "preparing",
+      "passthrough" => "English",
+      "name" => "English",
+      "language_code" => "en",
+      "id" => "2"
     }
   end
 
   def simulcast_target do
     %{
-      id: "vuOfW021mz5QA500wYEQ9SeUYvuYnpFz011mqSvski5T8claN02JN9ve2g",
-      url: "rtmp://live.example1.com/app",
-      stream_key: "abcdefgh",
-      passthrough: "Example 1"
+      "id" => "vuOfW021mz5QA500wYEQ9SeUYvuYnpFz011mqSvski5T8claN02JN9ve2g",
+      "url" => "rtmp://live.example1.com/app",
+      "stream_key" => "abcdefgh",
+      "passthrough" => "Example 1"
     }
   end
 
   def delivery_usage do
     %{
-      passthrough: "Example 1",
-      delivered_seconds: 2040.533333,
-      created_at: "1566324794",
-      asset_state: "ready",
-      asset_id: "XwYTXo41yZD2xDIOKp2p00",
-      asset_duration: 480.533333
+      "passthrough" => "Example 1",
+      "delivered_seconds" => 2040.533333,
+      "created_at" => "1566324794",
+      "asset_state" => "ready",
+      "asset_id" => "XwYTXo41yZD2xDIOKp2p00",
+      "asset_duration" => 480.533333
     }
   end
 
