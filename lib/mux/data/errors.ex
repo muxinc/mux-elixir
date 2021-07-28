@@ -8,17 +8,17 @@ defmodule Mux.Data.Errors do
   @doc """
   Returns a list of playback errors along with details and statistics about them.
 
-  Returns `{:ok, errors, raw_env}`.
+  Returns `{:ok, raw_env | errors}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, errors, _env} = Mux.Data.Errors.list(client)
+      iex> {:ok, %{clean_body: errors} = _env} = Mux.Data.Errors.list(client)
       iex> errors
       #{inspect(Fixtures.errors()["data"])}
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, errors, _env} = Mux.Data.Errors.list(client, filters: ["operating_system:windows"], timeframe: ["24:hours"])
+      iex> {:ok, %{clean_body: errors} = _env} = Mux.Data.Errors.list(client, filters: ["operating_system:windows"], timeframe: ["24:hours"])
       iex> errors
       #{inspect(Fixtures.errors()["data"])}
 

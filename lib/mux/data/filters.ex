@@ -13,7 +13,7 @@ defmodule Mux.Data.Filters do
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, filters, _env} = Mux.Data.Filters.list(client)
+      iex> {:ok, %{clean_body: filters} = _env} = Mux.Data.Filters.list(client)
       iex> filters
       #{inspect(Fixtures.filters()["data"])}
 
@@ -25,12 +25,12 @@ defmodule Mux.Data.Filters do
   @doc """
   Lists the values for a specific filter along with a total count of related views.
 
-  Returns `{:ok, filters, raw_env}`.
+  Returns `{:ok, raw_env | filters}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, filters, _env} = Mux.Data.Filters.get(client, "browser")
+      iex> {:ok, %{clean_body: filters} = _env} = Mux.Data.Filters.get(client, "browser")
       iex> filters
       #{inspect(Fixtures.filters(:browser)["data"])}
 

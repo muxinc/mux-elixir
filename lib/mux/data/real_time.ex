@@ -14,12 +14,12 @@ defmodule Mux.Data.RealTime do
   @doc """
   List of available real-time dimensions
 
-  Returns `{:ok, dimensions, raw_env}`.
+  Returns `{:ok, raw_env | dimensions}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, dimensions, _env} = Mux.Data.RealTime.dimensions(client)
+      iex> {:ok, %{clean_body: dimensions} = _env} = Mux.Data.RealTime.dimensions(client)
       iex> dimensions
       #{inspect(Fixtures.realtime_dimensions()["data"])}
 
@@ -31,12 +31,12 @@ defmodule Mux.Data.RealTime do
   @doc """
   List of available real-time metrics
 
-  Returns `{:ok, metrics, raw_env}`.
+  Returns `{:ok, raw_env | metrics}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, metrics, _env} = Mux.Data.RealTime.metrics(client)
+      iex> {:ok, %{clean_body: metrics} = _env} = Mux.Data.RealTime.metrics(client)
       iex> metrics
       #{inspect(Fixtures.realtime_metrics()["data"])}
 
@@ -48,12 +48,12 @@ defmodule Mux.Data.RealTime do
   @doc """
   Get breakdown information for a specific dimension and metric along with the number of concurrent viewers and negative impact score.
 
-  Returns `{:ok, breakdown, raw_env}`.
+  Returns `{:ok, raw_env | breakdown}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, breakdown, _env} = Mux.Data.RealTime.breakdown(client, "playback-failure-percentage", dimension: "country", timestamp: 1_547_853_000, filters: ["operating_system:windows"])
+      iex> {:ok, %{clean_body: breakdown} = _env} = Mux.Data.RealTime.breakdown(client, "playback-failure-percentage", dimension: "country", timestamp: 1_547_853_000, filters: ["operating_system:windows"])
       iex> breakdown
       #{inspect(Fixtures.realtime_breakdown()["data"])}
 
@@ -65,12 +65,12 @@ defmodule Mux.Data.RealTime do
   @doc """
   List histogram timeseries information for a specific metric
 
-  Returns `{:ok, histogram_timeseries, raw_env}`.
+  Returns `{:ok, raw_env | histogram_timeseries}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, histogram_timeseries, _env} = Mux.Data.RealTime.histogram_timeseries(client, "video-startup-time", filters: ["operating_system:windows", "country:US"])
+      iex> {:ok, %{clean_body: histogram_timeseries} = _env} = Mux.Data.RealTime.histogram_timeseries(client, "video-startup-time", filters: ["operating_system:windows", "country:US"])
       iex> histogram_timeseries
       #{inspect(Fixtures.realtime_histogram_timeseries()["data"])}
 
@@ -82,12 +82,12 @@ defmodule Mux.Data.RealTime do
   @doc """
   List timeseries information for a specific metric along with the number of concurrent viewers.
 
-  Returns `{:ok, timeseries, raw_env}`.
+  Returns `{:ok, raw_env | timeseries}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, timeseries, _env} = Mux.Data.RealTime.timeseries(client, "playback-failure-percentage", filters: ["operating_system:windows", "country:US"])
+      iex> {:ok, %{clean_body: timeseries} = _env} = Mux.Data.RealTime.timeseries(client, "playback-failure-percentage", filters: ["operating_system:windows", "country:US"])
       iex> timeseries
       #{inspect(Fixtures.realtime_timeseries()["data"])}
 

@@ -11,12 +11,12 @@ defmodule Mux.Video.PlaybackIds do
   @doc """
   Retrieve a asset or live stream identifier by Playback ID.
 
-  Returns `{:ok, playback_id_full, raw_env}`.
+  Returns `{:ok, raw_env | playback_id_full}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, playback_id_full, _env} = Mux.Video.PlaybackIds.get(client, "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> {:ok, %{clean_body: playback_id_full} = _env} = Mux.Video.PlaybackIds.get(client, "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
       iex> playback_id_full
       #{inspect(Fixtures.playback_id_full())}
 

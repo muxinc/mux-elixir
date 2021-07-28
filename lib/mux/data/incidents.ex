@@ -8,12 +8,12 @@ defmodule Mux.Data.Incidents do
   @doc """
   Lists all incidents.
 
-  Returns `{:ok, incidents, raw_env}`.
+  Returns `{:ok, raw_env | incidents}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, incidents, _env} = Mux.Data.Incidents.list(client, status: 'open', severity: 'alert')
+      iex> {:ok, %{clean_body: incidents} = _env} = Mux.Data.Incidents.list(client, status: 'open', severity: 'alert')
       iex> incidents
       #{inspect(Fixtures.incidents()["data"])}
 
@@ -25,12 +25,12 @@ defmodule Mux.Data.Incidents do
   @doc """
   Lists details for a single incident.
 
-  Returns `{:ok, incident, raw_env}`.
+  Returns `{:ok, raw_env | incident}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, incident, _env} = Mux.Data.Incidents.get(client, "ABCD1234")
+      iex> {:ok, %{clean_body: incident} = _env} = Mux.Data.Incidents.get(client, "ABCD1234")
       iex> incident
       #{inspect(Fixtures.incident()["data"])}
 
@@ -42,12 +42,12 @@ defmodule Mux.Data.Incidents do
   @doc """
   Lists all the incidents that seem related to a specific incident.
 
-  Returns `{:ok, incidents, raw_env}`.
+  Returns `{:ok, raw_env | incidents}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, incidents, _env} = Mux.Data.Incidents.related(client, "ABCD1234", measurement: "median")
+      iex> {:ok, %{clean_body: incidents} = _env} = Mux.Data.Incidents.related(client, "ABCD1234", measurement: "median")
       iex> incidents
       #{inspect(Fixtures.related_incidents()["data"])}
 

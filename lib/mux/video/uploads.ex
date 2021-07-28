@@ -10,15 +10,15 @@ defmodule Mux.Video.Uploads do
   @doc """
   Create a new direct upload.
 
-  Returns `{:ok, upload, %Tesla.Client{}}`.
+  Returns `{:ok, %Tesla.Client{} | upload}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> params = %{"new_asset_settings" => %{"playback_policies" => ["public"]}, "cors_origin" => "http://localhost:8080"}
-      iex> Mux.Video.Uploads.create(client, params)
-      {:ok, #{inspect(Fixtures.upload(:create))}, #{
-    inspect(Fixtures.tesla_env({:upload, [:create]}))
+      iex> {:ok, %{clean_body: upload} = _env} = Mux.Video.Uploads.create(client, params)
+      iex> upload
+      #{inspect(Fixtures.upload(:create))}
   }}
 
   """
@@ -29,12 +29,12 @@ defmodule Mux.Video.Uploads do
   @doc """
   List direct uploads.
 
-  Returns a tuple such as `{:ok, uploads, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, %Telsa.Env{} | uploads}`
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, uploads, _env} = Mux.Video.Uploads.list(client)
+      iex> {:ok, %{clean_body: uploads} = _env} = Mux.Video.Uploads.list(client)
       iex> uploads
       #{inspect([Fixtures.upload(), Fixtures.upload()])}
 
@@ -44,12 +44,12 @@ defmodule Mux.Video.Uploads do
   @doc """
   Retrieve a direct upload by ID.
 
-  Returns a tuple such as `{:ok, upload, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, %Telsa.Env{} | upload}`
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, upload, _env} = Mux.Video.Uploads.get(client, "OOTbA00CpWh6OgwV3asF00IvD2STk22UXM")
+      iex> {:ok, %{clean_body: upload} = _env} = Mux.Video.Uploads.get(client, "OOTbA00CpWh6OgwV3asF00IvD2STk22UXM")
       iex> upload
       #{inspect(Fixtures.upload())}
 
@@ -61,12 +61,12 @@ defmodule Mux.Video.Uploads do
   @doc """
   Cancel a direct upload.
 
-  Returns a tuple such as `{:ok, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, %Telsa.Env{} | direct_upload}`
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, direct_upload, _env} = Mux.Video.Uploads.cancel(client, "OOTbA00CpWh6OgwV3asF00IvD2STk22UXM")
+      iex> {:ok, %{clean_body: direct_upload} = _env} = Mux.Video.Uploads.cancel(client, "OOTbA00CpWh6OgwV3asF00IvD2STk22UXM")
       iex> direct_upload
       #{inspect(Fixtures.upload(:cancel))}
 

@@ -11,17 +11,17 @@ defmodule Mux.Data.VideoViews do
   timeframe. Results are ordered by `view_end`, according to what you provide for
   `order_direction`.
 
-  Returns `{:ok, views, raw_env}`.
+  Returns `{:ok, raw_env | views}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, views, _env} = Mux.Data.VideoViews.list(client)
+      iex> {:ok, %{clean_body: views} = _env} = Mux.Data.VideoViews.list(client)
       iex> views
       #{inspect(Fixtures.video_views()["data"])}
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, views, _env} = Mux.Data.VideoViews.list(client, filters: ["browser:Chrome"], order_direction: "desc", page: 2)
+      iex> {:ok, %{clean_body: views} = _env} = Mux.Data.VideoViews.list(client, filters: ["browser:Chrome"], order_direction: "desc", page: 2)
       iex> views
       #{inspect(Fixtures.video_views()["data"])}
 
@@ -33,12 +33,12 @@ defmodule Mux.Data.VideoViews do
   @doc """
   Returns the details for a single video view.
 
-  Returns `{:ok, view, raw_env}`.
+  Returns `{:ok, raw_env | view}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, view, _env} = Mux.Data.VideoViews.get(client, "k8n4aklUyrRDekILDWta1qSJqNFpYB7N50")
+      iex> {:ok, %{clean_body: view} = _env} = Mux.Data.VideoViews.get(client, "k8n4aklUyrRDekILDWta1qSJqNFpYB7N50")
       iex> view["id"] === "k8n4aklUyrRDekILDWta1qSJqNFpYB7N50"
       true
 

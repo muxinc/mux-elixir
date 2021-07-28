@@ -15,17 +15,17 @@ defmodule Mux.Data.Metrics do
   @doc """
   List the breakdown values for a specific metric.
 
-  Returns `{:ok, breakdowns, raw_env}`.
+  Returns `{:ok, raw_env | breakdowns}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, breakdowns, _env} = Mux.Data.Metrics.breakdown(client, "video_startup_time", "browser")
+      iex> {:ok, %{clean_body: breakdowns} = _env} = Mux.Data.Metrics.breakdown(client, "video_startup_time", "browser")
       iex> breakdowns
       #{inspect(Fixtures.breakdown()["data"])}
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, breakdowns, _env} = Mux.Data.Metrics.breakdown(client, "video_startup_time", "browser", measurement: "median", timeframe: ["6:hours"])
+      iex> {:ok, %{clean_body: breakdowns} = _env} = Mux.Data.Metrics.breakdown(client, "video_startup_time", "browser", measurement: "median", timeframe: ["6:hours"])
       iex> breakdowns
       #{inspect(Fixtures.breakdown()["data"])}
 
@@ -39,12 +39,12 @@ defmodule Mux.Data.Metrics do
   @doc """
   List all of the values across every breakdown for a specific breakdown value.
 
-  Returns `{:ok, comparisons, raw_env}`.
+  Returns `{:ok, raw_env | comparisons}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, comparison, _env} = Mux.Data.Metrics.comparison(client, "browser", "Safari")
+      iex> {:ok, %{clean_body: comparison} = _env} = Mux.Data.Metrics.comparison(client, "browser", "Safari")
       iex> comparison
       #{inspect(Fixtures.comparison()["data"])}
 
@@ -58,12 +58,12 @@ defmodule Mux.Data.Metrics do
   Returns a list of insights for a metric. These are the worst performing values across all breakdowns
   sorted by how much they negatively impact a specific metric.
 
-  Returns `{:ok, insights, raw_env}`.
+  Returns `{:ok, raw_env | insights}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, insights, _env} = Mux.Data.Metrics.insights(client, "video_startup_time")
+      iex> {:ok, %{clean_body: insights} = _env} = Mux.Data.Metrics.insights(client, "video_startup_time")
       iex> insights
       #{inspect(Fixtures.insights()["data"])}
 
@@ -76,12 +76,12 @@ defmodule Mux.Data.Metrics do
   Returns the overall value for a specific metric, as well as the total view count, watch time, and
   the Mux Global metric value for the metric.
 
-  Returns `{:ok, overall_values, raw_env}`.
+  Returns `{:ok, raw_env | overall_values}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, insights, _env} = Mux.Data.Metrics.overall(client, "video_startup_time")
+      iex> {:ok, %{clean_body: insights} = _env} = Mux.Data.Metrics.overall(client, "video_startup_time")
       iex> insights
       #{inspect(Fixtures.overall()["data"])}
 
@@ -93,12 +93,12 @@ defmodule Mux.Data.Metrics do
   @doc """
   Returns time series data for a given metric.
 
-  Returns `{:ok, timeseries, raw_env}`.
+  Returns `{:ok, raw_env | timeseries}`.
 
   ## Examples
 
       iex> client = Mux.client("my_token_id", "my_token_secret")
-      iex> {:ok, timeseries, _env} = Mux.Data.Metrics.timeseries(client, "video_startup_time")
+      iex> {:ok, %{clean_body: timeseries} = _env} = Mux.Data.Metrics.timeseries(client, "video_startup_time")
       iex> timeseries
       #{inspect(Fixtures.timeseries()["data"])}
 

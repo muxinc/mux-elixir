@@ -138,17 +138,17 @@ defmodule Mux.Video.AssetsTest do
     end
 
     test "returns a list of assets", %{client: client} do
-      {:ok, assets, _} = Assets.list(client)
+      {:ok, %{clean_body: assets}} = Assets.list(client)
       assert length(assets) == 2
     end
 
     test "takes query params as an option", %{client: client} do
-      {:ok, assets, _} = Assets.list(client, page: 2)
+      {:ok, %{clean_body: assets}} = Assets.list(client, page: 2)
       assert length(assets) == 1
     end
 
     test "returns a third argument that contains the raw Tesla.Env struct", %{client: client} do
-      assert {:ok, _, %Tesla.Env{}} = Assets.list(client)
+      assert {:ok, %Tesla.Env{}} = Assets.list(client)
     end
   end
 
@@ -168,7 +168,9 @@ defmodule Mux.Video.AssetsTest do
     end
 
     test "creates a new asset", %{client: client} do
-      {:ok, asset, %Tesla.Env{}} = Assets.create(client, %{input: "https://foobar.com/video.mp4"})
+      {:ok, %{clean_body: asset}} =
+        Assets.create(client, %{input: "https://foobar.com/video.mp4"})
+
       assert asset["status"] === "preparing"
     end
   end
@@ -189,7 +191,7 @@ defmodule Mux.Video.AssetsTest do
     end
 
     test "gets an asset by ID", %{client: client} do
-      assert {:ok, %{"id" => "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"}, %Tesla.Env{}} =
+      assert {:ok, %{clean_body: %{"id" => "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"}}} =
                Assets.get(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
     end
   end

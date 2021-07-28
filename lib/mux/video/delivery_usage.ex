@@ -9,12 +9,12 @@ defmodule Mux.Video.DeliveryUsage do
   @doc """
   Get delivery usage for a specified timeframe. [API Documentation](https://docs.mux.com/reference#list-usage)
 
-  Returns `{:ok, delivery_usage, %Tesla.Env{}}`.
+  Returns `{:ok, raw_env | delivery_usage}}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, delivery_usage, _env} = Mux.Video.DeliveryUsage.list(client, %{timeframe: [1564617600, 1569283200]})
+      iex> {:ok, %{clean_body: delivery_usage} = _env} = Mux.Video.DeliveryUsage.list(client, %{timeframe: [1564617600, 1569283200]})
       iex> delivery_usage
       #{inspect([Fixtures.delivery_usage(), Fixtures.delivery_usage()])}
   """

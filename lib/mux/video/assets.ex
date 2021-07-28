@@ -9,14 +9,14 @@ defmodule Mux.Video.Assets do
   @doc """
   Create a new asset.
 
-  Returns `{:ok, asset, %Tesla.Client{}}`.
+  Returns `{:ok, raw_env | asset}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> Mux.Video.Assets.create(client, %{input: "https://example.com/video.mp4"})
-      {:ok, #{inspect(Fixtures.asset(:create))}, #{
-    inspect(Fixtures.tesla_env({:asset, [:create]}))
+      iex> {:ok, %{clean_body: asset} = _env} = Mux.Video.Assets.create(client, %{input: "https://example.com/video.mp4"})
+      iex> asset
+      #{inspect(Fixtures.asset(:create))}
   }}
 
   """
@@ -27,12 +27,12 @@ defmodule Mux.Video.Assets do
   @doc """
   List assets.
 
-  Returns a tuple such as `{:ok, assets, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, raw_env | assets}`
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, assets, _env} = Mux.Video.Assets.list(client)
+      iex> {:ok, %{clean_body: assets} = _env} = Mux.Video.Assets.list(client)
       iex> assets
       #{inspect([Fixtures.asset(), Fixtures.asset()])}
 
@@ -42,12 +42,12 @@ defmodule Mux.Video.Assets do
   @doc """
   Retrieve an asset by ID.
 
-  Returns a tuple such as `{:ok, asset, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, raw_env | asset}`
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, asset, _env} = Mux.Video.Assets.get(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      iex> {:ok, %{clean_body: asset} = _env} = Mux.Video.Assets.get(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
       iex> asset
       #{inspect(Fixtures.asset())}
 
@@ -59,12 +59,12 @@ defmodule Mux.Video.Assets do
   @doc """
   Delete an asset.
 
-  Returns a tuple such as `{:ok, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, raw_env}`
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {status, "", _env} = Mux.Video.Assets.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      iex> {status, _env} = Mux.Video.Assets.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
       iex> status
       :ok
 
@@ -76,12 +76,12 @@ defmodule Mux.Video.Assets do
   @doc """
   Retrieve the asset's input info.
 
-  Returns a tuple such as `{:ok, input_info, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, raw_env | input_info}`
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, input_info, _env} = Mux.Video.Assets.input_info(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+      iex> {:ok, %{clean_body: input_info} = _env} = Mux.Video.Assets.input_info(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
       iex> input_info
       [#{inspect(Fixtures.input_info())}]
 
@@ -93,12 +93,12 @@ defmodule Mux.Video.Assets do
   @doc """
   Updates an asset's mp4 support
 
-  Returns a tuple such as `{:ok, asset, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, raw_env | asset}`
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, asset, _env} = Mux.Video.Assets.update_mp4_support(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{mp4_support: "standard"})
+      iex> {:ok, %{clean_body: asset} = _env} = Mux.Video.Assets.update_mp4_support(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{mp4_support: "standard"})
       iex> asset
       #{inspect(Fixtures.asset())}
 
@@ -110,12 +110,12 @@ defmodule Mux.Video.Assets do
   @doc """
   Updates an asset's master access
 
-  Returns a tuple such as `{:ok, asset, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, raw_env | asset}`
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, asset, _env} = Mux.Video.Assets.update_master_access(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{master_access: "temporary"})
+      iex> {:ok, %{clean_body: asset} = _env} = Mux.Video.Assets.update_master_access(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{master_access: "temporary"})
       iex> asset
       #{inspect(Fixtures.asset())}
 
@@ -127,14 +127,14 @@ defmodule Mux.Video.Assets do
   @doc """
   Create a new playback ID.
 
-  Returns `{:ok, playback_id, %Telsa.Env{}}`.
+  Returns `{:ok, raw_env | playback_id}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, playback_id, _env} = Mux.Video.Assets.create_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{policy: "public"})
+      iex> {:ok, %{clean_body: playback_id} = _env} = Mux.Video.Assets.create_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{policy: "public"})
       iex> playback_id
-      #{inspect(Fixtures.playback_id)}
+      #{inspect(Fixtures.playback_id())}
 
   """
   def create_playback_id(client, asset_id, params) do
@@ -144,14 +144,14 @@ defmodule Mux.Video.Assets do
   @doc """
   Retrieve a playback ID.
 
-  Returns `{:ok, playback_id, %Telsa.Env{}}`.
+  Returns `{:ok, raw_env | playback_id}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, playback_id, _env} = Mux.Video.Assets.get_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> {:ok, %{clean_body: playback_id} = _env} = Mux.Video.Assets.get_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
       iex> playback_id
-      #{inspect(Fixtures.playback_id)}
+      #{inspect(Fixtures.playback_id())}
 
   """
   def get_playback_id(client, asset_id, playback_id) do
@@ -161,12 +161,12 @@ defmodule Mux.Video.Assets do
   @doc """
   Delete a playback ID.
 
-  Returns `{:ok, nil, %Telsa.Env{}}`.
+  Returns `{:ok, raw_env}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {status, "", _env} = Mux.Video.Assets.delete_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> {status, _env} = Mux.Video.Assets.delete_playback_id(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
       iex> status
       :ok
 

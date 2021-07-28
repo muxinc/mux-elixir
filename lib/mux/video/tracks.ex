@@ -8,12 +8,12 @@ defmodule Mux.Video.Tracks do
   @doc """
   Create a new asset track. [API Documentation](https://docs.mux.com/reference#create-a-subtitle-text-track)
 
-  Returns `{:ok, track, raw_env}`.
+  Returns `{:ok, raw_env | track}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, track, _env} = Mux.Video.Tracks.create(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{url: "https://example.com/myVideo_en.srt", type: "text", text_type: "subtitles", language_code: "en" })
+      iex> {:ok, %{clean_body: track} = _env} = Mux.Video.Tracks.create(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{url: "https://example.com/myVideo_en.srt", type: "text", text_type: "subtitles", language_code: "en" })
       iex> track
       #{inspect(Fixtures.track())}
 
@@ -25,12 +25,12 @@ defmodule Mux.Video.Tracks do
   @doc """
   Delete an asset track. [API Documentation](https://docs.mux.com/reference#delete-a-subtitle-text-track)
 
-  Returns `{:ok, nil, raw_env}`.
+  Returns `{:ok, raw_env}`.
 
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {status, "", _env} = Mux.Video.Tracks.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> {status, %{clean_body: ""} = _env} = Mux.Video.Tracks.delete(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
       iex> status
       :ok
 
