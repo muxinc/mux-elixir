@@ -1,0 +1,32 @@
+name: Elixir tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+env:
+  MIX_ENV: test
+
+jobs:
+  elixir-tests:
+    name: Elixir Tests
+    timeout-minutes: 30
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Elixir
+        uses: erlef/setup-elixir@v1
+        with:
+          elixir-version: "1.6" # Define the elixir version [required]
+          otp-version: "20.0" # Define the OTP version [required]
+      - name: Restore deps cache
+        uses: actions/cache@v2
+        with:
+          path: deps
+          key: ${{ runner.os }}-deps-v1-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-deps-v1-
+      - name: Install dependencies
+        run: mix deps.get
+      - name: Run tests
+        run: mix test
