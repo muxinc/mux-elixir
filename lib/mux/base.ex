@@ -1,7 +1,7 @@
 defmodule Mux.Base do
   @moduledoc false
 
-  @type result :: {:ok, any, Tesla.Env.t()} | {:error, String.t(), String.t()}
+  @type result :: {:ok, any, Tesla.Env.t()} | {:error, String.t(), any}
 
   @doc """
   Wrapper for Tesla.get/3  that returns a simplified response
