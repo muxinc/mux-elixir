@@ -17,9 +17,7 @@ defmodule Mux.Video.Uploads do
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> params = %{"new_asset_settings" => %{"playback_policies" => ["public"]}, "cors_origin" => "http://localhost:8080"}
       iex> Mux.Video.Uploads.create(client, params)
-      {:ok, #{inspect(Fixtures.upload(:create))}, #{
-    inspect(Fixtures.tesla_env({:upload, [:create]}))
-  }}
+      {:ok, #{inspect(Fixtures.upload(:create))}, #{inspect(Fixtures.tesla_env({:upload, [:create]}))}}
 
   """
   def create(client, params) do
@@ -72,6 +70,6 @@ defmodule Mux.Video.Uploads do
 
   """
   def cancel(client, key_id) do
-    Base.put(client, @path <> key_id <> "/cancel", %{}, [])
+    Base.put(client, @path <> key_id <> "/cancel", %{})
   end
 end
