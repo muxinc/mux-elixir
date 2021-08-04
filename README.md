@@ -2,7 +2,7 @@
 
 # Mux Elixir
 
-![build status](https://travis-ci.org/muxinc/mux-elixir.svg?branch=master)
+![test workflow status](https://github.com/muxinc/mux-elixir/actions/workflows/ci.yml/badge.svg)
 
 <!-- MDOC !-->
 
