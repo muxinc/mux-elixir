@@ -53,7 +53,7 @@ Now we can use the client to do anything your heart desires (to do with the Mux 
 create new videos, manage playback IDs, etc.
 
 ```elixir
-{:ok, asset, raw_env} = Mux.Assets.create(client, %{input: "https://example.com/video.mp4"});
+{:ok, asset, raw_env} = Mux.Video.Assets.create(client, %{input: "https://example.com/video.mp4"});
 ```
 
 Every successful response will come back with a 3 item tuple starting with `:ok`. The second item
@@ -126,4 +126,3 @@ pass it into `Mux.Webhooks.verify_header/3`
 1. Commit and open a PR
 1. After code is merged, tag master ex: `git tag v1.7.0` and `git push --tags`
 1. run `mix publish`
-
