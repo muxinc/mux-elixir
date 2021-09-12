@@ -1,8 +1,14 @@
-![Mux Elixir Banner](github-elixir-sdk.png)
+![Mux Elixir Banner](assets/github-elixir-sdk.png)
 
 # Mux Elixir
 
-![test workflow status](https://github.com/muxinc/mux-elixir/actions/workflows/ci.yml/badge.svg)
+[![Elixir tests](https://github.com/muxinc/mux-elixir/actions/workflows/ci.yml/badge.svg)](https://github.com/muxinc/mux-elixir/actions/workflows/ci.yml)
+[![Module Version](https://img.shields.io/hexpm/v/mux.svg)](https://hex.pm/packages/mux)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/mux/)
+[![Total Download](https://img.shields.io/hexpm/dt/mux.svg)](https://hex.pm/packages/mux)
+[![License](https://img.shields.io/hexpm/l/mux.svg)](https://github.com/muxinc/mux-elixir/blob/master/LICENSE.md)
+[![Last Updated](https://img.shields.io/github/last-commit/muxinc/mux-elixir.svg)](https://github.com/muxinc/mux-elixir/commits/master)
+
 
 <!-- MDOC !-->
 
@@ -16,7 +22,7 @@ Not familiar with Mux? Check out https://mux.com/ for more information.
 
 ## Installation
 
-Add `mux` to your list of dependencies in `mix.exs`:
+Add `:mux` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -122,7 +128,17 @@ pass it into `Mux.Webhooks.verify_header/3`
 ## Publishing new versions
 
 1. Update version in mix.exs
-1. Update version in README
-1. Commit and open a PR
-1. After code is merged, tag master ex: `git tag v1.7.0` and `git push --tags`
-1. run `mix hex.publish`
+2. Update version in README
+3. Commit and open a PR
+4. After code is merged, tag master ex: `git tag v1.7.0` and `git push --tags`
+5. run `mix hex.publish`
+
+
+## Copyright and License
+
+Copyright (c) 2018 Mux, Inc.
+
+This work is free. You can redistribute it and/or modify it under the terms of
+the MIT License. See the [LICENSE.md](./LICENSE.md) file for more details.
+
+
