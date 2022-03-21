@@ -98,7 +98,7 @@ defmodule Mux.Webhooks do
     import Bitwise
 
     acc
-    |> bor(input_codepoint ^^^ expected_codepoint)
+    |> bor(bxor(input_codepoint, expected_codepoint))
     |> secure_compare(input, expected)
   end
 
