@@ -1,8 +1,17 @@
 ![Mux Elixir Banner](github-elixir-sdk.png)
 
-# Mux Elixir
+<h1 align="center"><pre>{:mux, "~> 2.1.0"}</pre></h1>
 
-![test workflow status](https://github.com/muxinc/mux-elixir/actions/workflows/ci.yml/badge.svg)
+<p align="center">
+  <a href="https://hex.pm/packages/mux"><img src="https://img.shields.io/hexpm/v/mux" title="hex.pm" /></a>
+  <a href="https://github.com/muxinc/mux-elixir/actions/workflows/ci.yml"><img src="https://github.com/muxinc/mux-elixir/actions/workflows/ci.yml/badge.svg" title="CI" /></a>
+</p>
+<p align="center">
+  <a href="https://hex.pm/packages/mux">Hex</a> |
+  <a href="https://hexdocs.pm/mux/Mux.html">HexDocs</a> |
+  <a href="https://docs.mux.com">Mux Docs</a> |
+  <a href="https://docs.mux.com/api-reference">Mux API Reference </a>
+</p>
 
 <!-- MDOC !-->
 
@@ -21,7 +30,7 @@ Add `mux` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:mux, "~> 2.0.0"}
+    {:mux, "~> 2.1.0"}
   ]
 end
 ```
