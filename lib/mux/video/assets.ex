@@ -1,6 +1,6 @@
 defmodule Mux.Video.Assets do
   @moduledoc """
-  This module provides functions for managing assets in Mux Video. [API Documentation](https://docs.mux.com/v1/reference#assets)
+  This module provides functions for managing assets in Mux Video. [API Documentation](https://docs.mux.com/api-reference/video#tag/assets)
   """
   alias Mux.{Base, Fixtures}
 

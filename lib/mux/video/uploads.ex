@@ -1,6 +1,6 @@
 defmodule Mux.Video.Uploads do
   @moduledoc """
-  This module provides functions for managing direct uploads in Mux Video. [API Documentation](https://docs.mux.com/docs/direct-upload)
+  This module provides functions for managing direct uploads in Mux Video. [API Documentation](https://docs.mux.com/api-reference/video#tag/direct-uploads)
   """
 
   alias Mux.{Base, Fixtures}

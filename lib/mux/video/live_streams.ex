@@ -1,13 +1,13 @@
 defmodule Mux.Video.LiveStreams do
   @moduledoc """
-  This module provides functions for managing live streams in Mux Video. [API Documentation](https://docs.mux.com/v1/reference#live-streams)
+  This module provides functions for managing live streams in Mux Video. [API Documentation](https://docs.mux.com/api-reference/video#tag/live-streams)
   """
   alias Mux.{Base, Fixtures}
 
   @path "/video/v1/live-streams"
 
   @doc """
-  Create a new live stream. [API Documentation](https://docs.mux.com/reference#create-a-live-stream)
+  Create a new live stream. [API Documentation](https://docs.mux.com/api-reference/video#operation/create-live-stream)
 
   Returns `{:ok, live_stream, %Tesla.Env{}}`.
 
@@ -23,7 +23,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  List all live streams. [API Documentation](https://docs.mux.com/reference#list-live-streams)
+  List all live streams. [API Documentation](https://docs.mux.com/api-reference/video#operation/list-live-streams)
 
   Returns a tuple such as `{:ok, live_streams, %Tesla.Env{}}`
 
@@ -38,7 +38,7 @@ defmodule Mux.Video.LiveStreams do
   def list(client, params \\ []), do: Base.get(client, @path, query: params)
 
   @doc """
-  Retrieve a live stream by ID. [API Documentation](https://docs.mux.com/reference#retrieve-a-live-stream)
+  Retrieve a live stream by ID. [API Documentation](https://docs.mux.com/api-reference/video#operation/get-live-stream)
 
   Returns a tuple such as `{:ok, live_stream, %Tesla.Env{}}`
 
@@ -55,7 +55,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Delete a live stream. [API Documentation](https://docs.mux.com/reference#delete-a-live-stream)
+  Delete a live stream. [API Documentation](https://docs.mux.com/api-reference/video#operation/delete-live-stream)
 
   Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
@@ -72,7 +72,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Signal a live stream is finished. [API Documentation](https://docs.mux.com/reference#signal-live-stream-complete)
+  Signal a live stream is finished. [API Documentation](https://docs.mux.com/api-reference/video#operation/signal-live-stream-complete)
 
   Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
@@ -91,7 +91,7 @@ defmodule Mux.Video.LiveStreams do
   @doc """
   Reset a live stream key if you want to immediately stop the current stream key
   from working and create a new stream key that can be used for future broadcasts.
-  [API Documentation](https://docs.mux.com/reference#reset-a-stream-key)
+  [API Documentation](https://docs.mux.com/api-reference/video#operation/reset-stream-key)
 
   Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
@@ -108,7 +108,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Create a live stream playback ID. [API Documentation](https://docs.mux.com/reference#add-a-live-stream-playback-id)
+  Create a live stream playback ID. [API Documentation](https://docs.mux.com/api-reference/video#operation/create-live-stream-playback-id)
 
   Returns a tuple such as `{:ok, playback_ids, %Tesla.Env{}}`
 
@@ -142,7 +142,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Delete a live stream playback ID. [API Documentation](https://docs.mux.com/reference#delete-a-live-stream-playback-id)
+  Delete a live stream playback ID. [API Documentation](https://docs.mux.com/api-reference/video#operation/delete-live-stream-playback-id)
 
   Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
@@ -159,7 +159,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Create a live stream simulcast target. [API Documentation](https://docs.mux.com/reference#create-a-simulcast-target)
+  Create a live stream simulcast target. [API Documentation](https://docs.mux.com/api-reference/video#operation/create-live-stream-simulcast-target)
 
   Returns a tuple such as `{:ok, simulcast_target, %Tesla.Env{}}`
 
@@ -176,7 +176,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Retrieve a live stream simulcast target. [API Documentation](https://docs.mux.com/reference#retrieve-a-simulcast-target)
+  Retrieve a live stream simulcast target. [API Documentation](https://docs.mux.com/api-reference/video#operation/get-live-stream-simulcast-target)
 
   Returns a tuple such as `{:ok, simulcast_target, %Tesla.Env{}}`
 
@@ -193,7 +193,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Delete a live stream simulcast target. [API Documentation](https://docs.mux.com/reference#delete-a-simulcast-target)
+  Delete a live stream simulcast target. [API Documentation](https://docs.mux.com/api-reference/video#operation/delete-live-stream-simulcast-target)
 
   Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
@@ -210,7 +210,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Enable a live stream is finished. [API Documentation](https://docs.mux.com/reference#enable-a-live-stream)
+  Enable a live stream is finished. [API Documentation](https://docs.mux.com/api-reference/video#operation/enable-live-stream)
 
   Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 
@@ -227,7 +227,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Disable a live stream is finished. [API Documentation](https://docs.mux.com/reference#disable-a-live-stream)
+  Disable a live stream is finished. [API Documentation](https://docs.mux.com/api-reference/video#operation/disable-live-stream)
 
   Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
 

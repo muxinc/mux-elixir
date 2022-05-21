@@ -1,13 +1,13 @@
 defmodule Mux.Video.DeliveryUsage do
   @moduledoc """
-  This module provides functions for reading delivery usage in Mux Video. [API Documentation](https://docs.mux.com/reference#delivery-usage)
+  This module provides functions for reading delivery usage in Mux Video. [API Documentation](https://docs.mux.com/api-reference/video#tag/delivery-usage)
   """
   alias Mux.{Base, Fixtures}
 
   @path "/video/v1/delivery-usage"
 
   @doc """
-  Get delivery usage for a specified timeframe. [API Documentation](https://docs.mux.com/reference#list-usage)
+  Get delivery usage for a specified timeframe. [API Documentation](https://docs.mux.com/api-reference/video#operation/list-delivery-usage)
 
   Returns `{:ok, delivery_usage, %Tesla.Env{}}`.
 

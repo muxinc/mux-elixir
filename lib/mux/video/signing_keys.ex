@@ -1,6 +1,6 @@
 defmodule Mux.Video.SigningKeys do
   @moduledoc """
-  This module provides functions for managing signing keys in Mux Video. [API Documentation](https://docs.mux.com/docs/security-signed-urls)
+  This module provides functions for managing signing keys in Mux Video. [API Documentation](https://docs.mux.com/guides/video/secure-video-playback)
   """
 
   alias Mux.{Base, Fixtures}
