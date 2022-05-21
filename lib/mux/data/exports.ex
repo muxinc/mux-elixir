@@ -11,6 +11,8 @@ defmodule Mux.Data.Exports do
   @doc """
   Lists the available video view exports along with URLs to retrieve them.
 
+  This method has been deprecated in favor of `Data.Exports.list_view_exports`.
+
   Returns `{:ok, exports, raw_env}`.
 
   ## Examples
@@ -23,6 +25,24 @@ defmodule Mux.Data.Exports do
   """
   def list(client) do
     Base.get(client, build_base_path())
+  end
+
+  @doc """
+  Lists the available video view exports along with URLs to retrieve them.
+
+  Returns `{:ok, exports, raw_env}`.
+
+  ## Examples
+
+      iex> client = Mux.client("my_token_id", "my_token_secret")
+      iex> {:ok, exports, _env} = Mux.Data.Exports.list_view_exports(client)
+      iex> exports
+      #{inspect(Fixtures.view_exports()["data"])}
+
+  """
+
+  def list_view_exports(client) do
+    Base.get(client, build_base_path() <> "/views")
   end
 
   defp build_base_path(), do: "/data/v1/exports"

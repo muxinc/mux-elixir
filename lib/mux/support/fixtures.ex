@@ -467,6 +467,51 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def view_exports() do
+    %{
+      "total_row_count" => 7,
+      "timeframe" => [
+        1_626_296_941,
+        1_626_383_341
+      ],
+      "data" => [
+        %{
+          "files" => [
+            %{
+              "version" => 2,
+              "type" => "csv",
+              "path" =>
+                "https://s3.amazonaws.com/mux-data-exports/1/2021_01_03.csv.gz?...signature..."
+            }
+          ],
+          "export_date" => "2021-01-03"
+        },
+        %{
+          "files" => [
+            %{
+              "version" => 2,
+              "type" => "csv",
+              "path" =>
+                "https://s3.amazonaws.com/mux-data-exports/1/2021_01_02.csv.gz?...signature..."
+            }
+          ],
+          "export_date" => "2021-01-02"
+        },
+        %{
+          "files" => [
+            %{
+              "version" => 2,
+              "type" => "csv",
+              "path" =>
+                "https://s3.amazonaws.com/mux-data-exports/1/2021_01_01.csv.gz?...signature..."
+            }
+          ],
+          "export_date" => "2021-01-01"
+        }
+      ]
+    }
+  end
+
   def filters() do
     %{
       "total_row_count" => nil,
