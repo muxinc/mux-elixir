@@ -174,6 +174,20 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def playback_restriction do
+    %{
+      "updated_at" => "1653174155",
+      "referrer" => %{
+        "allowed_domains" => [
+          "*.example.com"
+        ],
+        "allow_no_referrer" => true
+      },
+      "id" => "uP6cf00TE5HUvfdEmI6PR01vXQgZEjydC3",
+      "created_at" => "1653174155"
+    }
+  end
+
   def breakdown do
     %{
       "total_row_count" => 2,
