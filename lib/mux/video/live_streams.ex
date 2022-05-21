@@ -125,6 +125,23 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
+  Retrieve a playback ID.
+
+  Returns `{:ok, playback_id, %Telsa.Env{}}`.
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, playback_id, _env} = Mux.Video.LiveStreams.get_playback_id(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", "FRDDXsjcNgD013rx1M4CDunZ86xkq8A02hfF3b6XAa7iE")
+      iex> playback_id
+      #{inspect(Fixtures.playback_id())}
+
+  """
+  def get_playback_id(client, live_stream_id, playback_id) do
+    Base.get(client, "#{@path}/#{live_stream_id}/playback-ids/#{playback_id}")
+  end
+
+  @doc """
   Delete a live stream playback ID. [API Documentation](https://docs.mux.com/reference#delete-a-live-stream-playback-id)
 
   Returns a tuple such as `{:ok, "", %Tesla.Env{}}`
@@ -224,5 +241,22 @@ defmodule Mux.Video.LiveStreams do
   """
   def disable(client, live_stream_id) do
     Base.put(client, "#{@path}/#{live_stream_id}/disable", %{})
+  end
+
+  @doc """
+  Updates an live stream. See https://docs.mux.com/api-reference/video#operation/update-live-stream for
+  the values that are allowed.
+
+  Returns a tuple such as `{:ok, live_stream, %Tesla.Env{}}
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.update(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", %{passthrough: "updated_passthrough", "latency_mode": "low", "max_continuous_duration": 21600, "reconnect_window": 30})
+      iex> live_stream
+      #{inspect(Fixtures.live_stream(:update))}
+  """
+  def update(client, live_stream_id, params) do
+    Base.patch(client, "#{@path}/#{live_stream_id}", params)
   end
 end

@@ -59,6 +59,14 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def live_stream(:update) do
+    live_stream()
+    |> Map.put("passthrough", "updated_passthrough")
+    |> Map.put("latency_mode", "low")
+    |> Map.put("reconnect_window", 30)
+    |> Map.put("max_continuous_duration", 21600)
+  end
+
   def live_stream() do
     %{
       "stream_key" => "54676b58-6b19-5acb-f5bf-3aa35222efc6",
