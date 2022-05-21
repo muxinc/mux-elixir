@@ -244,7 +244,7 @@ defmodule Mux.Video.LiveStreams do
   end
 
   @doc """
-  Updates an live stream. See https://docs.mux.com/api-reference/video#operation/update-live-stream for
+  Updates a live stream. See https://docs.mux.com/api-reference/video#operation/update-live-stream for
   the values that are allowed.
 
   Returns a tuple such as `{:ok, live_stream, %Tesla.Env{}}
@@ -258,5 +258,21 @@ defmodule Mux.Video.LiveStreams do
   """
   def update(client, live_stream_id, params) do
     Base.patch(client, "#{@path}/#{live_stream_id}", params)
+  end
+
+  @doc """
+  Updates a live stream's embedded subtitles
+
+  Returns a tuple such as `{:ok, live_stream, %Tesla.Env{}}
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.update_embedded_subtitles(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", %{embedded_subtitles: %{name: "English CC", passthrough: "Example", language_code: "en", language_channel: "cc1"}})
+      iex> live_stream
+      #{inspect(Fixtures.live_stream(:subtitles))}
+  """
+  def update_embedded_subtitles(client, live_stream_id, params) do
+    Base.put(client, "#{@path}/#{live_stream_id}/embedded-subtitles", params)
   end
 end
