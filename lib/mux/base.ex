@@ -34,6 +34,16 @@ defmodule Mux.Base do
   end
 
   @doc """
+  Wrapper for Tesla.patch/3 that returns a simplified response
+  """
+  @spec patch(Tesla.Env.client(), String.t(), any) :: result()
+  def patch(client, path, params) do
+    client
+    |> Mux.Tesla.patch(path, params)
+    |> simplify_response()
+  end
+
+  @doc """
   Wrapper for Tesla.delete/2 that returns a simplified response
   """
   @spec delete(Tesla.Env.client(), String.t(), any) :: result()

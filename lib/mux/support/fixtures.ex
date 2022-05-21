@@ -17,6 +17,11 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def asset(:update) do
+    asset()
+    |> Map.put("passthrough", "updated_passthrough")
+  end
+
   def asset(_) do
     %{
       "tracks" => [

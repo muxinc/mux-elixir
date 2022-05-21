@@ -104,6 +104,17 @@ defmodule Mux.Video.AssetsTest do
 
       %{method: :delete} ->
         %Tesla.Env{status: 204, body: ""}
+
+      %{
+        method: :patch,
+        url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"
+      } ->
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => Mux.Fixtures.asset(:update)
+          }
+        }
     end)
 
     {:ok, %{client: client}}
@@ -191,6 +202,37 @@ defmodule Mux.Video.AssetsTest do
     test "gets an asset by ID", %{client: client} do
       assert {:ok, %{"id" => "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"}, %Tesla.Env{}} =
                Assets.get(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc")
+    end
+  end
+
+  describe "update/3" do
+    setup do
+      mock(fn
+        %{
+          method: :patch,
+          url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"
+        } ->
+          %Tesla.Env{
+            status: 200,
+            body: %{
+              "data" => Mux.Fixtures.asset(:update)
+            }
+          }
+      end)
+
+      :ok
+    end
+
+    test "updates an asset by ID", %{client: client} do
+      assert {:ok,
+              %{
+                "id" => "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc",
+                "passthrough" => "updated_passthrough"
+              },
+              %Tesla.Env{}} =
+               Assets.update(client, "00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc", %{
+                 passthrough: "updated_passthrough"
+               })
     end
   end
 end

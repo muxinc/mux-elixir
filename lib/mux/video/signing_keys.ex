@@ -16,9 +16,7 @@ defmodule Mux.Video.SigningKeys do
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> Mux.Video.SigningKeys.create(client)
-      {:ok, #{inspect(Fixtures.signing_key(:create))}, #{
-    inspect(Fixtures.tesla_env({:signing_key, [:create]}))
-  }}
+      {:ok, #{inspect(Fixtures.signing_key(:create))}, #{inspect(Fixtures.tesla_env({:signing_key, [:create]}))}}
 
   """
   def create(client) do
