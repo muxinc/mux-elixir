@@ -1,7 +1,7 @@
 defmodule Mux.Data.Exports do
   @moduledoc """
   This module provides functions for accessing lists of data exports. Currently the only exports
-  available are raw video views. [API Documentation](https://api-docs.mux.com/#export)
+  available are raw video views. [API Documentation](https://docs.mux.com/api-reference/data#tag/exports)
 
   **Note:** These endpoints require that your plan has access to specific features. [Reach out to us](mailto:help@mux.com)
   if you have questions.

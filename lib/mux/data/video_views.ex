@@ -2,7 +2,7 @@ defmodule Mux.Data.VideoViews do
   @moduledoc """
   This module provides functions for interacting with individual video views. Note, the raw video views
   contain _quite_ a lot of data, so the `list` endpoint includes a filtered set of keys for each view.
-  [API Documentation](https://api-docs.mux.com/#video-view).
+  [API Documentation](https://docs.mux.com/api-reference/data#tag/video-views).
   """
   alias Mux.{Base, Fixtures}
 

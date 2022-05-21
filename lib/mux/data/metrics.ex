@@ -4,11 +4,11 @@ defmodule Mux.Data.Metrics do
   of the data product's statistical data.
 
   Note, these API documentation links may break periodically as we update documentation titles.
-  - [Breakdowns](https://api-docs.mux.com/#breakdown)
-  - [Comparison](https://api-docs.mux.com/#comparison)
-  - [Insights](https://api-docs.mux.com/#insight)
-  - [Overall](https://api-docs.mux.com/#overall)
-  - [Timeseries](https://api-docs.mux.com/#timeseries)
+  - [Breakdowns](https://docs.mux.com/api-reference/data#operation/list-breakdown-values)
+  - [Comparison](https://docs.mux.com/api-reference/data#operation/list-all-metric-values)
+  - [Insights](https://docs.mux.com/api-reference/data#operation/list-insights)
+  - [Overall](https://docs.mux.com/api-reference/data#operation/get-overall-values)
+  - [Timeseries](https://docs.mux.com/api-reference/data#operation/get-metric-timeseries-data)
   """
   alias Mux.{Base, Fixtures}
 
