@@ -71,4 +71,21 @@ defmodule Mux.Video.PlaybackRestrictions do
   def delete(client, playback_restriction_id, params \\ []) do
     Base.delete(client, "#{@path}/#{playback_restriction_id}", query: params)
   end
+
+  @doc """
+  Updates the referrer domain restriction for a playback restriction
+
+  Returns a tuple such as `{:ok, playback_restriction, %Tesla.Env{}}`
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, playback_restriction, _env} = Mux.Video.PlaybackRestrictions.update_referrer_domain_restriction(client, "uP6cf00TE5HUvfdEmI6PR01vXQgZEjydC3", %{allowed_domains: ["*.example.com"], allow_no_referrer: true})
+      iex> playback_restriction
+      #{inspect(Fixtures.playback_restriction())}
+
+  """
+  def update_referrer_domain_restriction(client, playback_restriction_id, params) do
+    Base.put(client, "#{@path}/#{playback_restriction_id}/referrer", params)
+  end
 end

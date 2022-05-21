@@ -44,6 +44,17 @@ defmodule Mux.Video.PlaybackRestrictionsTest do
               "/uP6cf00TE5HUvfdEmI6PR01vXQgZEjydC3"
       } ->
         %Tesla.Env{status: 204, body: ""}
+
+      %{
+        method: :put,
+        url: @base_url <> "/uP6cf00TE5HUvfdEmI6PR01vXQgZEjydC3/referrer"
+      } ->
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => Mux.Fixtures.playback_restriction()
+          }
+        }
     end)
 
     {:ok, %{client: client}}
