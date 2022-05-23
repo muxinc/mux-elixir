@@ -58,7 +58,7 @@ defmodule Mux.Video.SigningKeys do
   @doc """
   Delete a signing key.
 
-  Returns a tuple such as `{:ok, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, "", %Telsa.Env{}}`
 
   ## Examples
 

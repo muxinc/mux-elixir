@@ -57,7 +57,7 @@ defmodule Mux.Video.Assets do
   @doc """
   Delete an asset.
 
-  Returns a tuple such as `{:ok, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, "", %Telsa.Env{}}`
 
   ## Examples
 
@@ -175,7 +175,7 @@ defmodule Mux.Video.Assets do
   @doc """
   Delete a playback ID.
 
-  Returns `{:ok, nil, %Telsa.Env{}}`.
+  Returns `{:ok, "", %Telsa.Env{}}`.
 
   ## Examples
 
