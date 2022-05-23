@@ -1,7 +1,7 @@
 defmodule Mux.Data.Errors do
   @moduledoc """
   This module provides functions for working with playback errors, which is typically an error
-  thrown by the player that caused playback failure. [API Documentation](https://api-docs.mux.com/#view-error).
+  thrown by the player that caused playback failure. [API Documentation](https://docs.mux.com/api-reference/data#tag/errors).
   """
   alias Mux.{Base, Fixtures}
 

@@ -1,7 +1,7 @@
 defmodule Mux.Data.Filters do
   @moduledoc """
   This module includes functions for retrieving available filters and their values in our system. These
-  endpoints, for example, are used to construct the breakdown tables in the metrics UI. [API Documentation](https://api-docs.mux.com/#filter)
+  endpoints, for example, are used to construct the breakdown tables in the metrics UI. [API Documentation](https://docs.mux.com/api-reference/data#tag/filters)
   """
   alias Mux.{Base, Fixtures}
 

@@ -1,6 +1,6 @@
 defmodule Mux.Video.SigningKeys do
   @moduledoc """
-  This module provides functions for managing signing keys in Mux Video. [API Documentation](https://docs.mux.com/docs/security-signed-urls)
+  This module provides functions for managing signing keys in Mux Video. [API Documentation](https://docs.mux.com/guides/video/secure-video-playback)
   """
 
   alias Mux.{Base, Fixtures}
@@ -16,9 +16,7 @@ defmodule Mux.Video.SigningKeys do
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
       iex> Mux.Video.SigningKeys.create(client)
-      {:ok, #{inspect(Fixtures.signing_key(:create))}, #{
-    inspect(Fixtures.tesla_env({:signing_key, [:create]}))
-  }}
+      {:ok, #{inspect(Fixtures.signing_key(:create))}, #{inspect(Fixtures.tesla_env({:signing_key, [:create]}))}}
 
   """
   def create(client) do

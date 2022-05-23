@@ -3,11 +3,11 @@ defmodule Mux.Data.RealTime do
   This module provides functions that interact with the `real-time` endpoints
 
   Note, these API documentation links may break periodically as we update documentation titles.
-  - [Dimensions](https://api-docs.mux.com/#real-time-get)
-  - [Metrics](https://api-docs.mux.com/#real-time-get-1)
-  - [Breakdown](https://api-docs.mux.com/#real-time-get-2)
-  - [HistogramTimeseries](https://api-docs.mux.com/#real-time-get-3)
-  - [Timeseries](https://api-docs.mux.com/#real-time-get-4)
+  - [Dimensions](https://docs.mux.com/api-reference/data#operation/list-realtime-dimensions)
+  - [Metrics](https://docs.mux.com/api-reference/data#operation/list-realtime-metrics)
+  - [Breakdown](https://docs.mux.com/api-reference/data#operation/get-realtime-breakdown)
+  - [HistogramTimeseries](https://docs.mux.com/api-reference/data#operation/get-realtime-histogram-timeseries)
+  - [Timeseries](https://docs.mux.com/api-reference/data#operation/get-realtime-timeseries)
   """
   alias Mux.{Base, Fixtures}
 

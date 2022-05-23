@@ -17,6 +17,11 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def asset(:update) do
+    asset()
+    |> Map.put("passthrough", "updated_passthrough")
+  end
+
   def asset(_) do
     %{
       "tracks" => [
@@ -52,6 +57,24 @@ defmodule Mux.Fixtures do
       "created_at" => "1521503163",
       "aspect_ratio" => "16:9"
     }
+  end
+
+  def live_stream(:update) do
+    live_stream()
+    |> Map.put("passthrough", "updated_passthrough")
+    |> Map.put("latency_mode", "low")
+    |> Map.put("reconnect_window", 30)
+    |> Map.put("max_continuous_duration", 21600)
+  end
+
+  def live_stream(:subtitles) do
+    live_stream()
+    |> Map.put("embedded_subtitles", %{
+      "name" => "English CC",
+      "language_code" => "en",
+      "language_channel" => "cc1",
+      "passthrough" => "Example"
+    })
   end
 
   def live_stream() do
@@ -148,6 +171,20 @@ defmodule Mux.Fixtures do
       "asset_state" => "ready",
       "asset_id" => "XwYTXo41yZD2xDIOKp2p00",
       "asset_duration" => 480.533333
+    }
+  end
+
+  def playback_restriction do
+    %{
+      "updated_at" => "1653174155",
+      "referrer" => %{
+        "allowed_domains" => [
+          "*.example.com"
+        ],
+        "allow_no_referrer" => true
+      },
+      "id" => "uP6cf00TE5HUvfdEmI6PR01vXQgZEjydC3",
+      "created_at" => "1653174155"
     }
   end
 
@@ -426,6 +463,51 @@ defmodule Mux.Fixtures do
       "data" => [
         "https://s3.amazonaws.com/mux-data-exports-test/10942/2017_10_1.csv.gz?signature=asdf1234",
         "https://s3.amazonaws.com/mux-data-exports-test/10942/2017_10_2.csv.gz?signature=asdf1234"
+      ]
+    }
+  end
+
+  def view_exports() do
+    %{
+      "total_row_count" => 7,
+      "timeframe" => [
+        1_626_296_941,
+        1_626_383_341
+      ],
+      "data" => [
+        %{
+          "files" => [
+            %{
+              "version" => 2,
+              "type" => "csv",
+              "path" =>
+                "https://s3.amazonaws.com/mux-data-exports/1/2021_01_03.csv.gz?...signature..."
+            }
+          ],
+          "export_date" => "2021-01-03"
+        },
+        %{
+          "files" => [
+            %{
+              "version" => 2,
+              "type" => "csv",
+              "path" =>
+                "https://s3.amazonaws.com/mux-data-exports/1/2021_01_02.csv.gz?...signature..."
+            }
+          ],
+          "export_date" => "2021-01-02"
+        },
+        %{
+          "files" => [
+            %{
+              "version" => 2,
+              "type" => "csv",
+              "path" =>
+                "https://s3.amazonaws.com/mux-data-exports/1/2021_01_01.csv.gz?...signature..."
+            }
+          ],
+          "export_date" => "2021-01-01"
+        }
       ]
     }
   end

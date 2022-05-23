@@ -1,12 +1,12 @@
 defmodule Mux.Video.Tracks do
   @moduledoc """
   This module provides functions around managing tracks in Mux Video. Tracks are
-  used for subtitles/captions. [API Documentation](https://docs.mux.com/reference#create-a-subtitle-text-track).
+  used for subtitles/captions. [API Documentation](https://docs.mux.com/api-reference/video#operation/create-asset-track).
   """
   alias Mux.{Base, Fixtures}
 
   @doc """
-  Create a new asset track. [API Documentation](https://docs.mux.com/reference#create-a-subtitle-text-track)
+  Create a new asset track. [API Documentation](https://docs.mux.com/api-reference/video#operation/create-asset-track)
 
   Returns `{:ok, track, raw_env}`.
 
@@ -23,7 +23,7 @@ defmodule Mux.Video.Tracks do
   end
 
   @doc """
-  Delete an asset track. [API Documentation](https://docs.mux.com/reference#delete-a-subtitle-text-track)
+  Delete an asset track. [API Documentation](https://docs.mux.com/api-reference/video#operation/delete-asset-track)
 
   Returns `{:ok, nil, raw_env}`.
 

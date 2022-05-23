@@ -11,6 +11,9 @@ defmodule Mux.Data.ExportsTest do
     mock(fn
       %{method: :get, url: @base_url} ->
         %Tesla.Env{status: 200, body: Mux.Fixtures.exports()}
+
+      %{method: :get, url: @base_url <> "/views"} ->
+        %Tesla.Env{status: 200, body: Mux.Fixtures.view_exports()}
     end)
 
     {:ok, %{client: client}}

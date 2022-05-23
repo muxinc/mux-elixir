@@ -1,7 +1,7 @@
 defmodule Mux.Data.Incidents do
   @moduledoc """
   This module includes functions for retrieving available incidents and their values in our system. These
-  endpoints, for example, are used to construct the incidents tables in the alerts UI. [API Documentation](https://api-docs.mux.com/#incident)
+  endpoints, for example, are used to construct the incidents tables in the alerts UI. [API Documentation](https://docs.mux.com/api-reference/data#operation/list-incidents)
   """
   alias Mux.{Base, Fixtures}
 
