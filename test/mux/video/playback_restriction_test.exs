@@ -1,7 +1,7 @@
 defmodule Mux.Video.PlaybackRestrictionsTest do
   use ExUnit.Case
   import Tesla.Mock
-  alias Mux.Video.PlaybackRestrictions
+
   doctest Mux.Video.PlaybackRestrictions
 
   @base_url "https://api.mux.com/video/v1/playback-restrictions"
