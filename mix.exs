@@ -3,7 +3,7 @@ defmodule Mux.MixProject do
 
   @github_url "https://github.com/muxinc/mux-elixir"
 
-  @version "2.1.0"
+  @version "2.2.0"
 
   def project do
     [
