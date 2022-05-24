@@ -188,6 +188,30 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def space do
+    %{
+      "broadcasts" => [
+        broadcast()
+      ],
+      "created_at" => "1653342466",
+      "id" => "xe00FkgJMdZrYQ001VC53bd01lf9ADs6YWk",
+      "passthrough" => "example",
+      "status" => "idle",
+      "type" => "server"
+    }
+  end
+
+  def broadcast do
+    %{
+      "background" => "https://example.com/background.jpg",
+      "id" => "fZw6qjWmKLmjfi0200NBzsgGrXZImT3KiJ",
+      "layout" => "gallery",
+      "live_stream_id" => "vJvFbCojkuSDAAeEK4EddOA01wRqN1mP4",
+      "resolution" => "1920x1080",
+      "status" => "idle"
+    }
+  end
+
   def breakdown do
     %{
       "total_row_count" => 2,

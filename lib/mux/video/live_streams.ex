@@ -252,7 +252,7 @@ defmodule Mux.Video.LiveStreams do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.update(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", %{passthrough: "updated_passthrough", "latency_mode": "low", "max_continuous_duration": 21600, "reconnect_window": 30})
+      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.update(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", %{passthrough: "updated_passthrough", latency_mode: "low", max_continuous_duration: 21600, reconnect_window: 30})
       iex> live_stream
       #{inspect(Fixtures.live_stream(:update))}
   """

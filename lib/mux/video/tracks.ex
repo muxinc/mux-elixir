@@ -25,7 +25,7 @@ defmodule Mux.Video.Tracks do
   @doc """
   Delete an asset track. [API Documentation](https://docs.mux.com/api-reference/video#operation/delete-asset-track)
 
-  Returns `{:ok, nil, raw_env}`.
+  Returns `{:ok, "", raw_env}`.
 
   ## Examples
 

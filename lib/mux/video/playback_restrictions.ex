@@ -14,7 +14,7 @@ defmodule Mux.Video.PlaybackRestrictions do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, playback_restriction, _env} = Mux.Video.PlaybackRestrictions.create(client, %{referrer: %{"allowed_domains": ["*.example.com"], allow_no_referrer: true}})
+      iex> {:ok, playback_restriction, _env} = Mux.Video.PlaybackRestrictions.create(client, %{referrer: %{allowed_domains: ["*.example.com"], allow_no_referrer: true}})
       iex> playback_restriction
       #{inspect(Fixtures.playback_restriction())}
 
@@ -56,9 +56,9 @@ defmodule Mux.Video.PlaybackRestrictions do
   end
 
   @doc """
-  Delete an playback restriction.
+  Delete a playback restriction.
 
-  Returns a tuple such as `{:ok, %Telsa.Env{}}`
+  Returns a tuple such as `{:ok, "", %Telsa.Env{}}`
 
   ## Examples
 
