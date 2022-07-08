@@ -16,7 +16,7 @@ defmodule Mux.Video.TranscriptionVocabularies do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, transcription_vocabulary, _env} = Mux.Video.TranscriptionVocabularies.create(client, %{name: "API Vocabulary", "phrases": ["Mux", "Live Stream", "Playback ID"]})
+      iex> {:ok, transcription_vocabulary, _env} = Mux.Video.TranscriptionVocabularies.create(client, %{name: "API Vocabulary", phrases: ["Mux", "Live Stream", "Playback ID"]})
       iex> transcription_vocabulary
       #{inspect(Fixtures.transcription_vocabulary())}
 
@@ -82,7 +82,7 @@ defmodule Mux.Video.TranscriptionVocabularies do
   ## Examples
 
       iex> client = Mux.Base.new("my_token_id", "my_token_secret")
-      iex> {:ok, transcription_vocabulary, _env} = Mux.Video.TranscriptionVocabularies.update(client, "ANZLqMO4E01TQW01SyFJfrdZzvjMVuyYqE", %{name: "New API Vocabulary", "phrases": ["Mux", "Live Stream", "Playback ID", "New phrase"]})
+      iex> {:ok, transcription_vocabulary, _env} = Mux.Video.TranscriptionVocabularies.update(client, "ANZLqMO4E01TQW01SyFJfrdZzvjMVuyYqE", %{name: "New API Vocabulary", phrases: ["Mux", "Live Stream", "Playback ID", "New phrase"]})
       iex> transcription_vocabulary
       #{inspect(Fixtures.transcription_vocabulary(:update))}
   """
