@@ -848,6 +848,26 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def transcription_vocabulary() do
+    %{
+      "created_at" => "1657242248",
+      "id" => "ANZLqMO4E01TQW01SyFJfrdZzvjMVuyYqE",
+      "name" => "API Vocabulary",
+      "phrases" => ["Mux", "Live Stream", "Playback ID"],
+      "updated_at" => "1657242248"
+    }
+  end
+
+  def transcription_vocabulary(:update) do
+    %{
+      "created_at" => "1657242248",
+      "id" => "ANZLqMO4E01TQW01SyFJfrdZzvjMVuyYqE",
+      "name" => "New API Vocabulary",
+      "phrases" => ["Mux", "Live Stream", "Playback ID", "New phrase"],
+      "updated_at" => "1657242420"
+    }
+  end
+
   def video_views() do
     %{
       "total_row_count" => 2,
