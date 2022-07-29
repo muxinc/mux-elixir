@@ -574,7 +574,65 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def dimensions() do
+    %{
+      "total_row_count" => nil,
+      "timeframe" => [
+        1_516_328_397,
+        1_516_414_797
+      ],
+      "data" => %{
+        "basic" => [
+          "browser",
+          "country",
+          "operating_system",
+          "player_software",
+          "player_software_version",
+          "source_hostname",
+          "source_type",
+          "stream_type",
+          "video_title"
+        ],
+        "advanced" => [
+          "asn",
+          "browser_version",
+          "cdn",
+          "experiment_name",
+          "operating_system_version",
+          "player_name",
+          "player_version",
+          "preroll_ad_asset_hostname",
+          "preroll_ad_tag_hostname",
+          "preroll_played",
+          "preroll_requested",
+          "sub_property_id",
+          "video_series"
+        ]
+      }
+    }
+  end
+
   def filters(:browser) do
+    %{
+      "total_row_count" => 2,
+      "timeframe" => [
+        1_516_241_996,
+        1_516_501_196
+      ],
+      "data" => [
+        %{
+          "value" => "Safari",
+          "total_count" => 2
+        },
+        %{
+          "value" => "Chrome",
+          "total_count" => 1
+        }
+      ]
+    }
+  end
+
+  def dimensions(:browser) do
     %{
       "total_row_count" => 2,
       "timeframe" => [

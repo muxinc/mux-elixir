@@ -2,11 +2,15 @@ defmodule Mux.Data.Filters do
   @moduledoc """
   This module includes functions for retrieving available filters and their values in our system. These
   endpoints, for example, are used to construct the breakdown tables in the metrics UI. [API Documentation](https://docs.mux.com/api-reference/data#tag/filters)
+
+  This module has been deprecated in favor of `Data.Dimensions`.
   """
   alias Mux.{Base, Fixtures}
 
   @doc """
   Lists all the filters broken out into basic and advanced.
+
+  This method has been deprecated in favor of `Data.Dimensions.list`.
 
   Returns `{:ok, filters, raw_env}`.
 
@@ -24,6 +28,8 @@ defmodule Mux.Data.Filters do
 
   @doc """
   Lists the values for a specific filter along with a total count of related views.
+
+  This method has been deprecated in favor of `Data.Dimensions.get`.
 
   Returns `{:ok, filters, raw_env}`.
 
