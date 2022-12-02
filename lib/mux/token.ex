@@ -3,7 +3,7 @@ defmodule Mux.Token do
   This module provides helpers for working with Playback IDs with `signed` playback policies. [API Documentation](https://docs.mux.com/docs/security-signed-urls)
   """
 
-  @type signature_type :: :video | :thumbnail | :gif | :storyboard
+  @type signature_type :: :video | :thumbnail | :gif | :storyboard | :stats
   @type option ::
           {:type, signature_type}
           | {:expiration, integer}
@@ -21,6 +21,8 @@ defmodule Mux.Token do
   - `options.type`: Type of signature to create. Defaults to `:video`, options are: `:video, :gif, :thumbnail, :storyboard`
   - `options.expiration`: Seconds the token is valid for. Defaults to 7 days from now (604,800)
   - `options.params`: Map that includes any additional query params. For thumbnails this would be values like `height` or `time`.
+
+  This method has been deprecated in favor of Mux.Token.sign_playback_id
   """
   @spec sign(String.t(), options()) :: String.t()
   def sign(playback_id, opts \\ []) do
@@ -38,6 +40,73 @@ defmodule Mux.Token do
       %{
         "aud" => opts[:type] |> type_to_aud(),
         "sub" => playback_id,
+        "exp" => (DateTime.utc_now() |> DateTime.to_unix()) + opts[:expiration]
+      }
+      |> Map.merge(params)
+      |> Jason.encode!()
+
+    JOSE.JWS.sign(signer, payload, claims) |> JOSE.JWS.compact() |> elem(1)
+  end
+
+  @doc """
+  Create a signed URL token for a playback ID.
+
+  `options` object can include:
+  - `options.token_id`: Signing token ID (defaults to `Application.get_env(:mux, :signing_token_id)`)
+  - `options.token_secret`: Signing token secret (defaults to `Application.get_env(:mux, :signing_token_secret)`)
+  - `options.type`: Type of signature to create. Defaults to `:video`, options are: `:video, :gif, :thumbnail, :storyboard`
+  - `options.expiration`: Seconds the token is valid for. Defaults to 7 days from now (604,800)
+  - `options.params`: Map that includes any additional query params. For thumbnails this would be values like `height` or `time`.
+  """
+  @spec sign_playback_id(String.t(), options()) :: String.t()
+  def sign_playback_id(playback_id, opts \\ []) do
+    opts = opts |> default_options()
+    signer = opts[:token_secret] |> jwt_signer
+    params = opts[:params]
+
+    claims = %{
+      "typ" => "JWT",
+      "alg" => "RS256",
+      "kid" => opts[:token_id]
+    }
+
+    payload =
+      %{
+        "aud" => opts[:type] |> type_to_aud(),
+        "sub" => playback_id,
+        "exp" => (DateTime.utc_now() |> DateTime.to_unix()) + opts[:expiration]
+      }
+      |> Map.merge(params)
+      |> Jason.encode!()
+
+    JOSE.JWS.sign(signer, payload, claims) |> JOSE.JWS.compact() |> elem(1)
+  end
+
+  @doc """
+  Create a signed URL token for a Space ID.
+
+  `options` object can include:
+  - `options.token_id`: Signing token ID (defaults to `Application.get_env(:mux, :signing_token_id)`)
+  - `options.token_secret`: Signing token secret (defaults to `Application.get_env(:mux, :signing_token_secret)`)
+  - `options.expiration`: Seconds the token is valid for. Defaults to 7 days from now (604,800)
+  - `options.params`: Map that includes any additional query params. For thumbnails this would be values like `height` or `time`.
+  """
+  @spec sign_space_id(String.t(), options()) :: String.t()
+  def sign_space_id(space_id, opts \\ []) do
+    opts = opts |> default_options()
+    signer = opts[:token_secret] |> jwt_signer
+    params = opts[:params]
+
+    claims = %{
+      "typ" => "JWT",
+      "alg" => "RS256",
+      "kid" => opts[:token_id]
+    }
+
+    payload =
+      %{
+        "aud" => "rt",
+        "sub" => space_id,
         "exp" => (DateTime.utc_now() |> DateTime.to_unix()) + opts[:expiration]
       }
       |> Map.merge(params)
@@ -78,4 +147,5 @@ defmodule Mux.Token do
   defp type_to_aud(:thumbnail), do: "t"
   defp type_to_aud(:gif), do: "g"
   defp type_to_aud(:storyboard), do: "s"
+  defp type_to_aud(:stats), do: "playback_id"
 end
