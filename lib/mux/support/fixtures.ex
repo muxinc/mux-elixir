@@ -1319,6 +1319,213 @@ defmodule Mux.Fixtures do
     }
   end
 
+  def monitoring_dimensions() do
+    %{
+      "total_row_count" => nil,
+      "timeframe" => [
+        1_584_577_180,
+        1_584_663_580
+      ],
+      "data" => [
+        %{
+          "name" => "asn",
+          "display_name" => "ASN"
+        },
+        %{
+          "name" => "cdn",
+          "display_name" => "CDN"
+        },
+        %{
+          "name" => "country",
+          "display_name" => "Country"
+        },
+        %{
+          "name" => "operating_system",
+          "display_name" => "Operating system"
+        },
+        %{
+          "name" => "player_name",
+          "display_name" => "Player name"
+        },
+        %{
+          "name" => "region",
+          "display_name" => "Region / State"
+        },
+        %{
+          "name" => "stream_type",
+          "display_name" => "Stream type"
+        },
+        %{
+          "name" => "sub_property_id",
+          "display_name" => "Sub property ID"
+        },
+        %{
+          "name" => "video_series",
+          "display_name" => "Video series"
+        },
+        %{
+          "name" => "video_title",
+          "display_name" => "Video title"
+        }
+      ]
+    }
+  end
+
+  def monitoring_metrics() do
+    %{
+      "total_row_count" => nil,
+      "timeframe" => [
+        1_584_577_184,
+        1_584_663_584
+      ],
+      "data" => [
+        %{
+          "name" => "current-concurrent-viewers",
+          "display_name" => "Current Concurrent Viewers (CCV)"
+        },
+        %{
+          "name" => "current-rebuffering-percentage",
+          "display_name" => "Current Rebuffering Percentage"
+        },
+        %{
+          "name" => "exits-before-video-start",
+          "display_name" => "Exits Before Video Start"
+        },
+        %{
+          "name" => "playback-failure-percentage",
+          "display_name" => "Playback Failure Percentage"
+        },
+        %{
+          "name" => "video-startup-time",
+          "display_name" => "Video Startup Time"
+        }
+      ]
+    }
+  end
+
+  def monitoring_breakdown() do
+    %{
+      "total_row_count" => nil,
+      "timeframe" => [
+        1_547_853_000,
+        1_547_853_000
+      ],
+      "data" => [
+        %{
+          "value" => "AR",
+          "negative_impact" => 3,
+          "metric_value" => 0,
+          "concurrent_viewers" => 1
+        }
+      ]
+    }
+  end
+
+  def monitoring_histogram_timeseries() do
+    %{
+      "total_row_count" => nil,
+      "timeframe" => [
+        1_582_591_920,
+        1_582_593_660
+      ],
+      "meta" => %{
+        "buckets" => [
+          %{
+            "start" => 0,
+            "end" => 100
+          },
+          %{
+            "start" => 100,
+            "end" => 500
+          },
+          %{
+            "start" => 500,
+            "end" => 1000
+          },
+          %{
+            "start" => 1000,
+            "end" => 2000
+          },
+          %{
+            "start" => 2000,
+            "end" => 5000
+          },
+          %{
+            "start" => 5000,
+            "end" => 10000
+          },
+          %{
+            "start" => 10000,
+            "end" => nil
+          }
+        ],
+        "bucket_unit" => "milliseconds"
+      },
+      "data" => [
+        %{
+          "timestamp" => "2020-02-25T00:52:00Z",
+          "sum" => 76,
+          "p95" => 6809,
+          "median" => 425,
+          "max_percentage" => 0.27631578947368424,
+          "bucket_values" => [
+            %{
+              "percentage" => 0.25,
+              "count" => 19
+            },
+            %{
+              "percentage" => 0.27631578947368424,
+              "count" => 21
+            },
+            %{
+              "percentage" => 0.19736842105263158,
+              "count" => 15
+            },
+            %{
+              "percentage" => 0.14473684210526316,
+              "count" => 11
+            },
+            %{
+              "percentage" => 0.05263157894736842,
+              "count" => 4
+            },
+            %{
+              "percentage" => 0.05263157894736842,
+              "count" => 4
+            },
+            %{
+              "percentage" => 0.02631578947368421,
+              "count" => 2
+            }
+          ],
+          "average" => 1446.328947368421
+        }
+      ]
+    }
+  end
+
+  def monitoring_timeseries() do
+    %{
+      "total_row_count" => nil,
+      "timeframe" => [
+        1_582_591_905,
+        1_582_593_700
+      ],
+      "data" => [
+        %{
+          "value" => 0.0597809346162238,
+          "date" => "2020-02-25T00:51:45Z",
+          "concurrent_viewers" => 477
+        },
+        %{
+          "value" => 0.059590005296620834,
+          "date" => "2020-02-25T00:51:50Z",
+          "concurrent_viewers" => 487
+        }
+      ]
+    }
+  end
+
   def tesla_env({fixture_name, args}) do
     %Tesla.Env{
       __client__: nil,
