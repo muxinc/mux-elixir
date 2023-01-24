@@ -1,5 +1,8 @@
 defmodule Mux.Data.RealTime do
   @moduledoc """
+
+  This module has been deprecated in favor of `Data.Monitoring`.
+
   This module provides functions that interact with the `real-time` endpoints
 
   Note, these API documentation links may break periodically as we update documentation titles.
@@ -12,6 +15,8 @@ defmodule Mux.Data.RealTime do
   alias Mux.{Base, Fixtures}
 
   @doc """
+  This method has been deprecated in favor of `Mux.Data.Monitoring.dimensions`.
+
   List of available real-time dimensions
 
   Returns `{:ok, dimensions, raw_env}`.
@@ -29,6 +34,8 @@ defmodule Mux.Data.RealTime do
   end
 
   @doc """
+  This method has been deprecated in favor of `Mux.Data.Monitoring.metrics`.
+
   List of available real-time metrics
 
   Returns `{:ok, metrics, raw_env}`.
@@ -46,6 +53,8 @@ defmodule Mux.Data.RealTime do
   end
 
   @doc """
+  This method has been deprecated in favor of `Mux.Data.Monitoring.breakdown`.
+
   Get breakdown information for a specific dimension and metric along with the number of concurrent viewers and negative impact score.
 
   Returns `{:ok, breakdown, raw_env}`.
@@ -63,6 +72,8 @@ defmodule Mux.Data.RealTime do
   end
 
   @doc """
+  This method has been deprecated in favor of `Mux.Data.Monitoring.histogram_timeseries`.
+
   List histogram timeseries information for a specific metric
 
   Returns `{:ok, histogram_timeseries, raw_env}`.
@@ -80,6 +91,8 @@ defmodule Mux.Data.RealTime do
   end
 
   @doc """
+  This method has been deprecated in favor of `Mux.Data.Monitoring.timeseries`.
+
   List timeseries information for a specific metric along with the number of concurrent viewers.
 
   Returns `{:ok, timeseries, raw_env}`.
