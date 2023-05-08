@@ -275,4 +275,20 @@ defmodule Mux.Video.LiveStreams do
   def update_embedded_subtitles(client, live_stream_id, params) do
     Base.put(client, "#{@path}/#{live_stream_id}/embedded-subtitles", params)
   end
+
+  @doc """
+  Updates a live stream's generated subtitles
+
+  Returns a tuple such as `{:ok, live_stream, %Tesla.Env{}}
+
+  ## Examples
+
+      iex> client = Mux.Base.new("my_token_id", "my_token_secret")
+      iex> {:ok, live_stream, _env} = Mux.Video.LiveStreams.update_generated_subtitles(client, "aA02skpHXoLrbQm49qIzAG6RtewFOcDEY", %{generated_subtitles: %{name: "English generated", passthrough: "Example", language: "en"}})
+      iex> live_stream
+      #{inspect(Fixtures.live_stream(:subtitles))}
+  """
+  def update_generatred_subtitles(client, live_stream_id, params) do
+    Base.put(client, "#{@path}/#{live_stream_id}/generated-subtitles", params)
+  end
 end
