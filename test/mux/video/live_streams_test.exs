@@ -153,6 +153,17 @@ defmodule Mux.Video.LiveStreamsTest do
             "data" => Mux.Fixtures.live_stream(:subtitles)
           }
         }
+
+      %{
+        method: :put,
+        url: @base_url <> "/aA02skpHXoLrbQm49qIzAG6RtewFOcDEY/generated-subtitles"
+      } ->
+        %Tesla.Env{
+          status: 200,
+          body: %{
+            "data" => Mux.Fixtures.live_stream(:subtitles)
+          }
+        }
     end)
 
     {:ok, %{client: client}}

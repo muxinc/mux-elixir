@@ -288,7 +288,7 @@ defmodule Mux.Video.LiveStreams do
       iex> live_stream
       #{inspect(Fixtures.live_stream(:subtitles))}
   """
-  def update_generatred_subtitles(client, live_stream_id, params) do
+  def update_generated_subtitles(client, live_stream_id, params) do
     Base.put(client, "#{@path}/#{live_stream_id}/generated-subtitles", params)
   end
 end
