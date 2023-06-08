@@ -97,7 +97,7 @@ defmodule Mux.Video.LiveStreamsTest do
               "/aA02skpHXoLrbQm49qIzAG6RtewFOcDEY/simulcast-targets/vuOfW021mz5QA500wYEQ9SeUYvuYnpFz011mqSvski5T8claN02JN9ve2g"
       } ->
         %Tesla.Env{
-          status: 201,
+          status: 200,
           body: %{
             "data" => Mux.Fixtures.simulcast_target()
           }
