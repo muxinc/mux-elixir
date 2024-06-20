@@ -4,6 +4,7 @@ defmodule Mux.Tesla do
   use Tesla
 
   plug(Tesla.Middleware.JSON)
+  plug(Tesla.Middleware.Headers, [{"user-agent", "Mux-Elixir"}])
 
   @defaults [
     base_url: "https://api.mux.com"
