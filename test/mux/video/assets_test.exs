@@ -189,7 +189,7 @@ defmodule Mux.Video.AssetsTest do
       mock(fn
         %{method: :get, url: @base_url <> "/video/v1/assets/00ecNLnqiG8v00TLqqeZ00uCE5wCAaO3kKc"} ->
           %Tesla.Env{
-            status: 201,
+            status: 200,
             body: %{
               "data" => Mux.Fixtures.asset(:created)
             }
